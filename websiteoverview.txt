@@ -1,0 +1,15 @@
+NextModernLabs – Website Content & Structure
+Home Page
+Hero Section Headline: We Build Digital Products That Drive Growth Subheadline: Modern web, mobile, and digital solutions for scalable businesses. CTA: Get a Free Consultation  Sections: - Services overview - Why choose us - Featured case studies - Process - Call to action
+About Us
+Who We Are: NextModernLabs is a modern digital agency focused on building scalable, high‑performance digital products.  Mission: To help businesses grow using clean design, smart engineering, and data‑driven strategies.  Vision: To become a trusted technology partner for startups and growing companies worldwide.
+Services
+- Web Development - Mobile App Development - UI/UX Design - SEO & Digital Marketing - Domain & Hosting
+Service Detail Page Template
+Overview of the service Problems we solve Our approach Tech stack Process CTA
+Case Studies
+Case Study Structure: - Client overview - Problem - Solution - Tech stack - Challenges - Results - Screenshots
+Contact Us
+Contact form Email & phone WhatsApp integration Clear CTA
+Blog / Insights
+SEO focused articles Industry insights Tech updates and case breakdowns
