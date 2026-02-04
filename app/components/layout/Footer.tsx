@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
     HiOutlineMail,
@@ -49,13 +50,14 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
                     {/* Brand Column */}
                     <div className="lg:col-span-2">
-                        <Link href="/" className="flex items-center gap-2 mb-6">
-                            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center shadow-lg shadow-primary-500/30">
-                                <span className="text-white font-bold text-lg">N</span>
-                            </div>
-                            <span className="font-display font-bold text-xl">
-                                NextModern<span className="text-primary-400">Labs</span>
-                            </span>
+                        <Link href="/" className="flex items-center gap-3 mb-6 group">
+                            <Image
+                                src="/logo.png"
+                                alt="NextModernLabs Logo"
+                                width={160}
+                                height={50}
+                                className="w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+                            />
                         </Link>
                         <p className="text-dark-400 mb-6 max-w-sm">
                             We build modern digital products that help businesses grow. From

@@ -153,13 +153,13 @@ export default function Hero() {
                             </div>
 
                             {/* Floating badges */}
-                            <motion.div
+                            {/* <motion.div
                                 animate={{ y: [0, -10, 0] }}
                                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                                 className="absolute -top-4 -right-4 px-4 py-2 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full text-white text-sm font-semibold shadow-lg shadow-cyan-500/30"
                             >
                                 ✨ Premium Quality
-                            </motion.div>
+                            </motion.div> */}
 
                             <motion.div
                                 animate={{ y: [0, 10, 0] }}
