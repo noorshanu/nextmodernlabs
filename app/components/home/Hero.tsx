@@ -15,10 +15,10 @@ const ThreeBackground = dynamic(() => import("../three/ThreeBackground"), {
 });
 
 const socialLinks = [
-    { icon: FaTwitter, href: "https://twitter.com", label: "Twitter" },
-    { icon: FaLinkedinIn, href: "https://linkedin.com", label: "LinkedIn" },
-    { icon: FaGithub, href: "https://github.com", label: "GitHub" },
-    { icon: FaInstagram, href: "https://instagram.com", label: "Instagram" },
+    { icon: FaTwitter, href: "https://x.com/NextModernLabs", label: "Twitter" },
+    { icon: FaLinkedinIn, href: "https://www.linkedin.com/company/next-modern-lab", label: "LinkedIn" },
+    { icon: FaGithub, href: "https://github.com/NextModernLabs", label: "GitHub" },
+    { icon: FaInstagram, href: "https://www.instagram.com/nextmodernlabs/", label: "Instagram" },
 ];
 
 export default function Hero() {

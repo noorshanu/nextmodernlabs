@@ -3,7 +3,11 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-export default function CTA() {
+interface CTAProps {
+    onOpenPopup: () => void;
+}
+
+export default function CTA({ onOpenPopup }: CTAProps) {
     return (
         <section id="contact" className="section-padding bg-white relative overflow-hidden">
             {/* Background Elements */}
@@ -69,8 +73,8 @@ export default function CTA() {
                                 transition={{ delay: 0.4 }}
                                 className="flex flex-col sm:flex-row items-center justify-center gap-4"
                             >
-                                <Link
-                                    href="mailto:hello@nextmodernlabs.com"
+                                <button
+                                    onClick={onOpenPopup}
                                     className="btn-primary text-lg px-8 py-4"
                                 >
                                     Get Free Consultation
@@ -87,9 +91,9 @@ export default function CTA() {
                                             d="M17 8l4 4m0 0l-4 4m4-4H3"
                                         />
                                     </svg>
-                                </Link>
+                                </button>
                                 <Link
-                                    href="https://wa.me/1234567890"
+                                    href="https://wa.me/+917903350593"
                                     target="_blank"
                                     className="inline-flex items-center gap-2 px-8 py-4 text-lg text-white font-semibold hover:text-primary-400 transition-colors duration-300"
                                 >

@@ -29,7 +29,7 @@ export default function Home() {
             <Services />
             <WhyUs />
             <Process />
-            <CTA />
+            <CTA onOpenPopup={() => setShowPopup(true)} />
             <Footer />
 
             <LeadGenPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />

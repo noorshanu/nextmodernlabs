@@ -36,9 +36,9 @@ const footerLinks = {
 };
 
 const socialLinks = [
-    { name: "Twitter", icon: FaTwitter, href: "https://twitter.com" },
-    { name: "LinkedIn", icon: FaLinkedinIn, href: "https://linkedin.com" },
-    { name: "Instagram", icon: FaInstagram, href: "https://instagram.com" },
+    { name: "Twitter", icon: FaTwitter, href: "https://x.com/NextModernLabs" },
+    { name: "LinkedIn", icon: FaLinkedinIn, href: "https://www.linkedin.com/company/next-modern-lab" },
+    { name: "Instagram", icon: FaInstagram, href: "https://www.instagram.com/nextmodernlabs/" },
     { name: "GitHub", icon: FaGithub, href: "https://github.com" },
 ];
 
@@ -71,18 +71,18 @@ export default function Footer() {
                                 className="flex items-center gap-3 text-dark-400 hover:text-primary-400 transition-colors"
                             >
                                 <HiOutlineMail className="w-5 h-5" />
-                                hello@nextmodernlabs.com
+                              hello@s.nextmodernlabs.com
                             </a>
                             <a
                                 href="tel:+1234567890"
                                 className="flex items-center gap-3 text-dark-400 hover:text-primary-400 transition-colors"
                             >
                                 <HiOutlinePhone className="w-5 h-5" />
-                                +1 (234) 567-890
+                                +917903350593
                             </a>
                             <div className="flex items-center gap-3 text-dark-400">
                                 <HiOutlineLocationMarker className="w-5 h-5" />
-                                San Francisco, CA
+                               Bangalore, Karnataka, India
                             </div>
                         </div>
                     </div>
