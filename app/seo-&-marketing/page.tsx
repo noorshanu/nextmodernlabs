@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
+import LeadGenPopup from "../components/home/LeadGenPopup";
 import {
     SiGoogleanalytics,
     SiGoogleads,
@@ -301,6 +302,7 @@ function StatCard({ value, suffix, label }: { value: number; suffix: string; lab
 
 export default function SEOMarketingPage() {
     const [activeCase, setActiveCase] = useState(0);
+    const [showPopup, setShowPopup] = useState(false);
     const heroRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
     const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
@@ -384,15 +386,15 @@ export default function SEOMarketingPage() {
                                 transition={{ duration: 0.6, delay: 0.3 }}
                                 className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-12"
                             >
-                                <Link
-                                    href="#contact"
+                                <button
+                                    onClick={() => setShowPopup(true)}
                                     className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-emerald-600 to-green-600 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-emerald-500/40 transition-all duration-300"
                                 >
                                     Get Free SEO Audit
                                     <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                     </svg>
-                                </Link>
+                                </button>
                                 <Link
                                     href="#projects"
                                     className="inline-flex items-center gap-2 px-8 py-4 border border-slate-600 text-slate-300 font-semibold rounded-full hover:bg-slate-800/50 hover:border-emerald-500/50 transition-all duration-300"
@@ -913,15 +915,15 @@ export default function SEOMarketingPage() {
                                 transition={{ delay: 0.35 }}
                                 className="flex flex-col sm:flex-row items-center justify-center gap-4"
                             >
-                                <Link
-                                    href="mailto:hello@nextmodernlabs.com"
+                                <button
+                                    onClick={() => setShowPopup(true)}
                                     className="group inline-flex items-center gap-2 px-8 py-4 bg-white text-emerald-700 font-bold rounded-full hover:shadow-2xl hover:shadow-white/20 hover:-translate-y-0.5 transition-all duration-300"
                                 >
                                     Get Free SEO Audit
                                     <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                     </svg>
-                                </Link>
+                                </button>
                                 <Link
                                     href="#projects"
                                     className="inline-flex items-center gap-2 px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-full hover:bg-white/10 transition-all duration-300"
@@ -935,6 +937,8 @@ export default function SEOMarketingPage() {
             </section>
 
             <Footer />
+
+            <LeadGenPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />
         </main>
     );
 }

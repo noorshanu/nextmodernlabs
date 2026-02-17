@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
+import LeadGenPopup from "../components/home/LeadGenPopup";
 import {
   SiReact,
   SiNextdotjs,
@@ -298,6 +299,7 @@ function StatCard({ value, suffix, label }: { value: number; suffix: string; lab
 
 export default function WebDevelopmentPage() {
   const [sliderIndex, setSliderIndex] = useState(0);
+  const [showPopup, setShowPopup] = useState(false);
   const maxSlide = projects.length - 1;
 
   // Auto-play slider
@@ -378,8 +380,8 @@ export default function WebDevelopmentPage() {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4"
               >
-                <Link
-                  href="#contact"
+                <button
+                  onClick={() => setShowPopup(true)}
                   className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-cyan-500/40 transition-all duration-300"
                 >
                   Start Your Project
@@ -391,7 +393,7 @@ export default function WebDevelopmentPage() {
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
-                </Link>
+                </button>
                 <Link
                   href="#projects"
                   className="inline-flex items-center gap-2 px-8 py-4 border border-slate-600 text-slate-300 font-semibold rounded-full hover:bg-slate-800/50 hover:border-cyan-500/50 transition-all duration-300"
@@ -636,8 +638,8 @@ export default function WebDevelopmentPage() {
                     key={i}
                     onClick={() => setSliderIndex(i)}
                     className={`h-2 rounded-full transition-all duration-300 ${i === sliderIndex
-                        ? "w-8 bg-cyan-500"
-                        : "w-2 bg-slate-700 hover:bg-slate-600"
+                      ? "w-8 bg-cyan-500"
+                      : "w-2 bg-slate-700 hover:bg-slate-600"
                       }`}
                     aria-label={`Go to project ${i + 1}`}
                   />
@@ -845,8 +847,8 @@ export default function WebDevelopmentPage() {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="flex flex-col sm:flex-row items-center justify-center gap-4"
               >
-                <Link
-                  href="mailto:hello@nextmodernlabs.com"
+                <button
+                  onClick={() => setShowPopup(true)}
                   className="group inline-flex items-center gap-2 px-8 py-4 bg-white text-teal-700 font-bold rounded-full hover:shadow-2xl hover:shadow-white/20 hover:-translate-y-0.5 transition-all duration-300"
                 >
                   Get Free Consultation
@@ -858,7 +860,7 @@ export default function WebDevelopmentPage() {
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
-                </Link>
+                </button>
                 <Link
                   href="#projects"
                   className="inline-flex items-center gap-2 px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-full hover:bg-white/10 transition-all duration-300"
@@ -872,6 +874,8 @@ export default function WebDevelopmentPage() {
       </section>
 
       <Footer />
+
+      <LeadGenPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />
     </main>
   );
 }
