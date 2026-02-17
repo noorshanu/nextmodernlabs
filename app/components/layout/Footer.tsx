@@ -17,16 +17,16 @@ import {
 
 const footerLinks = {
     services: [
-        { name: "Web Development", href: "/services/web-development" },
-        { name: "Mobile Development", href: "/services/mobile-development" },
-        { name: "UI/UX Design", href: "/services/ui-ux-design" },
-        { name: "SEO & Marketing", href: "/services/seo-marketing" },
+        { name: "Web Development", href: "/web-development" },
+        { name: "Mobile Development", href: "/mobile-development" },
+        { name: "UI/UX Design", href: "/ui-ux-design" },
+        { name: "SEO & Marketing", href: "/seo-marketing" },
     ],
     company: [
-        { name: "About Us", href: "/about" },
-        { name: "Our Work", href: "/work" },
-        { name: "Blog", href: "/blog" },
-        { name: "Careers", href: "/careers" },
+        { name: "About Us", href: "#about" },
+        { name: "Our Work", href: "#work" },
+        { name: "Blog", href: "#blog" },
+        { name: "Careers", href: "#careers" },
     ],
     legal: [
         { name: "Privacy Policy", href: "/privacy" },
