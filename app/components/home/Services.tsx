@@ -8,6 +8,8 @@ import {
     HiOutlineTemplate,
     HiOutlineChartBar,
     HiOutlineGlobeAlt,
+    HiOutlineCube,
+    HiOutlineVideoCamera,
 } from "react-icons/hi";
 
 const services = [
@@ -27,7 +29,7 @@ const services = [
     },
     {
         icon: HiOutlineTemplate,
-        title: "UI/UX Design",
+        title: "UI UX Design",
         description:
             "Beautiful, intuitive interfaces designed with user research and modern design principles.",
         color: "from-orange-500 to-red-500",
@@ -45,6 +47,20 @@ const services = [
         description:
             "Reliable hosting solutions and domain management to keep your digital presence running smoothly.",
         color: "from-indigo-500 to-violet-500",
+    },
+    {
+        icon: HiOutlineCube,
+        title: "Web3 Development",
+        description:
+            "Full-spectrum Web3 solutions — dApps, token creation, staking platforms, and Chrome & Web3 wallet integrations.",
+        color: "from-amber-500 to-orange-500",
+    },
+    {
+        icon: HiOutlineVideoCamera,
+        title: "Digital Marketing",
+        description:
+            "Content creation, Reels & Shorts production, professional video editing, and stunning graphics design.",
+        color: "from-rose-500 to-pink-500",
     },
 ];
 
@@ -123,7 +139,7 @@ export default function Services() {
 
                             {/* Learn More Link */}
                             <Link
-                                href={`/services/${service.title.toLowerCase().replace(/ /g, "-")}`}
+                                href={`/${service.title.toLowerCase().replace(/ /g, "-")}`}
                                 className="inline-flex items-center gap-2 text-primary-500 font-semibold group-hover:gap-3 transition-all duration-300"
                             >
                                 Learn More
