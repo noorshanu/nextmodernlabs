@@ -125,6 +125,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" className="scroll-smooth">
+            <meta name="google-site-verification" content="Sj332OnfTr-aWBwQ31EHXLjsBGWhPLew-sAwZMmc7-k" />
             <body
                 className={`${inter.variable} ${outfit.variable} font-sans antialiased bg-white text-dark-900`}
             >
