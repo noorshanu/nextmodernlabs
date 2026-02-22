@@ -8,10 +8,10 @@ import { HiMenuAlt3, HiX } from "react-icons/hi";
 
 const navLinks = [
     { name: "Home", href: "/" },
-    { name: "Services", href: "#services" },
-    { name: "About", href: "#about" },
-    { name: "Process", href: "#process" },
-    { name: "Contact", href: "#contact" },
+    { name: "Services", href: "/services" },
+    { name: "About", href: "/about-us" },
+    { name: "Process", href: "/#process" },
+    { name: "Contact", href: "/contact-us" },
 ];
 
 export default function Navbar() {
@@ -69,7 +69,7 @@ export default function Navbar() {
                     {/* CTA Button */}
                     <div className="hidden lg:block">
                         <Link
-                            href="#contact"
+                            href="/contact-us"
                             className="relative inline-flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-semibold rounded-full overflow-hidden group hover:shadow-lg hover:shadow-cyan-500/40 transition-all duration-300"
                         >
                             <span className="relative z-10">Get Started</span>
@@ -139,7 +139,7 @@ export default function Navbar() {
                                 className="pt-4"
                             >
                                 <Link
-                                    href="#contact"
+                                    href="/contact-us"
                                     onClick={() => setIsOpen(false)}
                                     className="flex items-center justify-center gap-2 w-full py-3 bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-cyan-500/40 transition-all duration-300"
                                 >

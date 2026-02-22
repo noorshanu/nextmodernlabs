@@ -20,13 +20,16 @@ const footerLinks = {
         { name: "Web Development", href: "/web-development" },
         { name: "Mobile Development", href: "/mobile-development" },
         { name: "UI/UX Design", href: "/ui-ux-design" },
-        { name: "SEO & Marketing", href: "/seo-marketing" },
+        { name: "SEO & Marketing", href: "/seo-&-marketing" },
+        { name: "Digital Marketing", href: "/digital-marketing" },
+        { name: "Web3 Development", href: "/web3-development" },
+        { name: "Domain & Hosting", href: "/domain-&-hosting" },
     ],
     company: [
-        { name: "About Us", href: "#about" },
-        { name: "Our Work", href: "#work" },
-        { name: "Blog", href: "#blog" },
-        { name: "Careers", href: "#careers" },
+        { name: "About Us", href: "/about-us" },
+        { name: "Services", href: "/services" },
+        { name: "Process", href: "/#process" },
+        { name: "Contact Us", href: "/contact-us" },
     ],
     legal: [
         { name: "Privacy Policy", href: "/privacy" },
@@ -39,7 +42,7 @@ const socialLinks = [
     { name: "Twitter", icon: FaTwitter, href: "https://x.com/NextModernLabs" },
     { name: "LinkedIn", icon: FaLinkedinIn, href: "https://www.linkedin.com/company/next-modern-lab" },
     { name: "Instagram", icon: FaInstagram, href: "https://www.instagram.com/nextmodernlabs/" },
-    { name: "GitHub", icon: FaGithub, href: "https://github.com" },
+    { name: "GitHub", icon: FaGithub, href: "https://github.com/NextModernLabs" },
 ];
 
 export default function Footer() {
@@ -71,18 +74,20 @@ export default function Footer() {
                                 className="flex items-center gap-3 text-dark-400 hover:text-primary-400 transition-colors"
                             >
                                 <HiOutlineMail className="w-5 h-5" />
-                              hello@s.nextmodernlabs.com
+                                hello@nextmodernlabs.com
                             </a>
                             <a
-                                href="tel:+1234567890"
+                                href="https://wa.me/+917903350593"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="flex items-center gap-3 text-dark-400 hover:text-primary-400 transition-colors"
                             >
                                 <HiOutlinePhone className="w-5 h-5" />
-                                +917903350593
+                                +91 790 335 0593
                             </a>
                             <div className="flex items-center gap-3 text-dark-400">
                                 <HiOutlineLocationMarker className="w-5 h-5" />
-                               Bangalore, Karnataka, India
+                                Bangalore, Karnataka, India
                             </div>
                         </div>
                     </div>
