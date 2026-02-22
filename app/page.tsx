@@ -1,14 +1,17 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import dynamic from "next/dynamic";
 import Navbar from "./components/layout/Navbar";
 import Hero from "./components/home/Hero";
-import Services from "./components/home/Services";
-import WhyUs from "./components/home/WhyUs";
-import Process from "./components/home/Process";
-import CTA from "./components/home/CTA";
-import Footer from "./components/layout/Footer";
-import LeadGenPopup from "./components/home/LeadGenPopup";
+
+// Lazy-load below-fold sections to improve LCP and TBT
+const Services = dynamic(() => import("./components/home/Services"), { ssr: false });
+const WhyUs = dynamic(() => import("./components/home/WhyUs"), { ssr: false });
+const Process = dynamic(() => import("./components/home/Process"), { ssr: false });
+const CTA = dynamic(() => import("./components/home/CTA"), { ssr: false });
+const Footer = dynamic(() => import("./components/layout/Footer"), { ssr: false });
+const LeadGenPopup = dynamic(() => import("./components/home/LeadGenPopup"), { ssr: false });
 
 export default function Home() {
     const [showPopup, setShowPopup] = useState(false);

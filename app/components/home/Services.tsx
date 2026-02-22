@@ -141,6 +141,7 @@ export default function Services() {
                             <Link
                                 href={`/${service.title.toLowerCase().replace(/ /g, "-")}`}
                                 className="inline-flex items-center gap-2 text-primary-500 font-semibold group-hover:gap-3 transition-all duration-300"
+                                aria-label={`Learn more about ${service.title}`}
                             >
                                 Learn More
                                 <svg
@@ -148,6 +149,7 @@ export default function Services() {
                                     fill="none"
                                     stroke="currentColor"
                                     viewBox="0 0 24 24"
+                                    aria-hidden="true"
                                 >
                                     <path
                                         strokeLinecap="round"
