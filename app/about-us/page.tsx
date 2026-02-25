@@ -75,7 +75,7 @@ const values = [
 
 const founders = [
     {
-        name: "Noor Shanu",
+        name: "Masoom Shaik",
         role: "CEO & Co-Founder",
         bio: "A visionary entrepreneur with 5+ years of experience in digital product strategy and business development. Noor leads the company's vision, client relationships, and growth strategy — turning ambitious ideas into profitable digital businesses.",
         image: "/team/founder-1.png",
@@ -87,7 +87,7 @@ const founders = [
         tags: ["Product Strategy", "Business Development", "Leadership"],
     },
     {
-        name: "Aarav Mehta",
+        name: "Zeeshan Siddique",
         role: "CTO & Co-Founder",
         bio: "Full-stack engineer and system architect with a deep love for clean code and elegant solutions. Aarav oversees all engineering decisions, technical hiring, and ensures every product is built with performance, security, and scalability at its core.",
         image: "/team/founder-2.png",
@@ -102,7 +102,7 @@ const founders = [
 
 const team = [
     {
-        name: "Priya Kapoor",
+        name: "Swati Ranjan",
         role: "Lead UI/UX Designer",
         image: "/team/team-1.png",
         fallback: "PK",
@@ -116,28 +116,28 @@ const team = [
         gradient: "from-cyan-500 to-blue-500",
     },
     {
-        name: "Ananya Sharma",
+        name: "Shamshad Khan",
         role: "SEO & Marketing Lead",
         image: "/team/team-3.png",
         fallback: "AS",
         gradient: "from-amber-500 to-orange-500",
     },
     {
-        name: "Kiran Verma",
+        name: "Masoom Shaik",
         role: "Mobile Developer",
         image: "/team/team-4.png",
         fallback: "KV",
         gradient: "from-emerald-500 to-teal-500",
     },
     {
-        name: "Sahil Joshi",
+        name: "Parth",
         role: "Web3 & Blockchain Lead",
         image: "/team/team-5.png",
         fallback: "SJ",
         gradient: "from-violet-500 to-fuchsia-500",
     },
     {
-        name: "Zara Khan",
+        name: "Nafeesh ahmad",
         role: "Project Manager",
         image: "/team/team-6.png",
         fallback: "ZK",
