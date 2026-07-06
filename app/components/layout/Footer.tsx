@@ -2,12 +2,6 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import {
-    HiOutlineMail,
-    HiOutlinePhone,
-    HiOutlineLocationMarker,
-} from "react-icons/hi";
 import {
     FaTwitter,
     FaLinkedinIn,
@@ -23,7 +17,6 @@ const footerLinks = {
         { name: "SEO & Marketing", href: "/seo-&-marketing" },
         { name: "Digital Marketing", href: "/digital-marketing" },
         { name: "Web3 Development", href: "/web3-development" },
-        { name: "Domain & Hosting", href: "/domain-&-hosting" },
     ],
     company: [
         { name: "About Us", href: "/about-us" },
@@ -34,7 +27,6 @@ const footerLinks = {
     legal: [
         { name: "Privacy Policy", href: "/privacy" },
         { name: "Terms of Service", href: "/terms" },
-        { name: "Cookie Policy", href: "/cookies" },
     ],
 };
 
@@ -47,60 +39,37 @@ const socialLinks = [
 
 export default function Footer() {
     return (
-        <footer className="bg-dark-900 text-white">
-            {/* Main Footer */}
-            <div className="section-container py-16">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
+        <footer className="bg-black text-white border-t border-white/10">
+            <div className="section-container pt-20 pb-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
+                    
                     {/* Brand Column */}
-                    <div className="lg:col-span-2">
-                        <Link href="/" className="flex items-center gap-3 mb-6 group">
-                            <Image
-                                src="/logo.png"
-                                alt="NextModernLabs Logo"
-                                width={160}
-                                height={50}
-                                className="w-auto object-contain group-hover:scale-105 transition-transform duration-300"
-                            />
-                        </Link>
-                        <p className="text-dark-400 mb-6 max-w-sm">
-                            We build modern digital products that help businesses grow. From
-                            concept to launch, we&apos;re your trusted technology partner.
-                        </p>
-
-                        {/* Contact Info */}
-                        <div className="space-y-3">
-                            <a
-                                href="mailto:hello@nextmodernlabs.com"
-                                className="flex items-center gap-3 text-dark-400 hover:text-primary-400 transition-colors"
-                            >
-                                <HiOutlineMail className="w-5 h-5" />
-                                hello@nextmodernlabs.com
-                            </a>
-                            <a
-                                href="https://wa.me/+917903350593"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center gap-3 text-dark-400 hover:text-primary-400 transition-colors"
-                            >
-                                <HiOutlinePhone className="w-5 h-5" />
-                                +91 790 335 0593
-                            </a>
-                            <div className="flex items-center gap-3 text-dark-400">
-                                <HiOutlineLocationMarker className="w-5 h-5" />
-                                Bangalore, Karnataka, India
-                            </div>
+                    <div className="lg:col-span-2 flex flex-col justify-between">
+                        <div>
+                            <Link href="/" className="inline-block mb-8">
+                                <Image
+                                    src="/logo.png"
+                                    alt="NextModernLabs Logo"
+                                    width={160}
+                                    height={50}
+                                    className="w-auto object-contain brightness-0 invert"
+                                />
+                            </Link>
+                            <p className="text-neutral-400 text-lg max-w-sm">
+                                We build modern digital products that help businesses scale.
+                            </p>
                         </div>
                     </div>
 
                     {/* Services Links */}
                     <div>
-                        <h4 className="font-bold text-lg mb-4">Services</h4>
-                        <ul className="space-y-3">
+                        <h4 className="font-semibold text-white mb-6 text-sm uppercase tracking-wider">Services</h4>
+                        <ul className="space-y-4">
                             {footerLinks.services.map((link) => (
                                 <li key={link.name}>
                                     <Link
                                         href={link.href}
-                                        className="text-dark-400 hover:text-primary-400 transition-colors"
+                                        className="text-neutral-500 hover:text-white transition-colors duration-300 text-sm"
                                     >
                                         {link.name}
                                     </Link>
@@ -111,13 +80,13 @@ export default function Footer() {
 
                     {/* Company Links */}
                     <div>
-                        <h4 className="font-bold text-lg mb-4">Company</h4>
-                        <ul className="space-y-3">
+                        <h4 className="font-semibold text-white mb-6 text-sm uppercase tracking-wider">Company</h4>
+                        <ul className="space-y-4">
                             {footerLinks.company.map((link) => (
                                 <li key={link.name}>
                                     <Link
                                         href={link.href}
-                                        className="text-dark-400 hover:text-primary-400 transition-colors"
+                                        className="text-neutral-500 hover:text-white transition-colors duration-300 text-sm"
                                     >
                                         {link.name}
                                     </Link>
@@ -128,13 +97,13 @@ export default function Footer() {
 
                     {/* Legal Links */}
                     <div>
-                        <h4 className="font-bold text-lg mb-4">Legal</h4>
-                        <ul className="space-y-3">
+                        <h4 className="font-semibold text-white mb-6 text-sm uppercase tracking-wider">Legal</h4>
+                        <ul className="space-y-4">
                             {footerLinks.legal.map((link) => (
                                 <li key={link.name}>
                                     <Link
                                         href={link.href}
-                                        className="text-dark-400 hover:text-primary-400 transition-colors"
+                                        className="text-neutral-500 hover:text-white transition-colors duration-300 text-sm"
                                     >
                                         {link.name}
                                     </Link>
@@ -143,31 +112,25 @@ export default function Footer() {
                         </ul>
                     </div>
                 </div>
-            </div>
 
-            {/* Bottom Bar */}
-            <div className="border-t border-dark-800">
-                <div className="section-container py-6">
-                    <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-                        <p className="text-dark-500 text-sm">
-                            © {new Date().getFullYear()} NextModernLabs. All rights reserved.
-                        </p>
+                <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
+                    <p className="text-neutral-500 text-sm">
+                        © {new Date().getFullYear()} NextModernLabs. All rights reserved.
+                    </p>
 
-                        {/* Social Links */}
-                        <div className="flex items-center gap-4">
-                            {socialLinks.map((social) => (
-                                <a
-                                    key={social.name}
-                                    href={social.href}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="w-10 h-10 rounded-lg bg-dark-800 flex items-center justify-center text-dark-400 hover:bg-primary-500 hover:text-white transition-all duration-300"
-                                    aria-label={social.name}
-                                >
-                                    <social.icon className="w-5 h-5" />
-                                </a>
-                            ))}
-                        </div>
+                    <div className="flex items-center gap-6">
+                        {socialLinks.map((social) => (
+                            <a
+                                key={social.name}
+                                href={social.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-neutral-500 hover:text-white transition-colors duration-300"
+                                aria-label={social.name}
+                            >
+                                <social.icon className="w-5 h-5" />
+                            </a>
+                        ))}
                     </div>
                 </div>
             </div>

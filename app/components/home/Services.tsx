@@ -1,6 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
 import {
     HiOutlineCode,
@@ -12,193 +14,169 @@ import {
     HiOutlineVideoCamera,
 } from "react-icons/hi";
 
+if (typeof window !== "undefined") {
+    gsap.registerPlugin(ScrollTrigger);
+}
+
 const services = [
     {
         icon: HiOutlineCode,
         title: "Web Development",
-        description:
-            "Custom web applications built with modern technologies like React, Next.js, and Node.js for optimal performance.",
-        color: "from-blue-500 to-cyan-500",
+        description: "Custom web applications built with modern technologies like React, Next.js, and Node.js for optimal performance.",
+        colSpan: "md:col-span-2 lg:col-span-2",
     },
     {
         icon: HiOutlineDeviceMobile,
-        title: "Mobile Development",
-        description:
-            "Native and cross-platform mobile apps for iOS and Android that deliver seamless user experiences.",
-        color: "from-purple-500 to-pink-500",
+        title: "Mobile Apps",
+        description: "Native and cross-platform mobile apps that deliver seamless user experiences.",
+        colSpan: "md:col-span-1 lg:col-span-1",
     },
     {
         icon: HiOutlineTemplate,
         title: "UI UX Design",
-        description:
-            "Beautiful, intuitive interfaces designed with user research and modern design principles.",
-        color: "from-orange-500 to-red-500",
+        description: "Beautiful, intuitive interfaces designed with user research.",
+        colSpan: "md:col-span-1 lg:col-span-1",
     },
     {
         icon: HiOutlineChartBar,
         title: "SEO & Marketing",
-        description:
-            "Data-driven strategies to boost your online visibility and drive qualified traffic to your business.",
-        color: "from-green-500 to-emerald-500",
-    },
-    {
-        icon: HiOutlineGlobeAlt,
-        title: "Domain & Hosting",
-        description:
-            "Reliable hosting solutions and domain management to keep your digital presence running smoothly.",
-        color: "from-indigo-500 to-violet-500",
+        description: "Data-driven strategies to boost your online visibility.",
+        colSpan: "md:col-span-2 lg:col-span-1",
     },
     {
         icon: HiOutlineCube,
-        title: "Web3 Development",
-        description:
-            "Full-spectrum Web3 solutions — dApps, token creation, staking platforms, and Chrome & Web3 wallet integrations.",
-        color: "from-amber-500 to-orange-500",
+        title: "Web3 Solutions",
+        description: "Full-spectrum Web3 solutions — dApps, token creation, staking.",
+        colSpan: "md:col-span-3 lg:col-span-1",
     },
     {
         icon: HiOutlineVideoCamera,
         title: "Digital Marketing",
-        description:
-            "Content creation, Reels & Shorts production, professional video editing, and stunning graphics design.",
-        color: "from-rose-500 to-pink-500",
+        description: "Professional video editing, Reels, and stunning graphics design.",
+        colSpan: "md:col-span-1 lg:col-span-2",
+    },
+    {
+        icon: HiOutlineGlobeAlt,
+        title: "Domain & Hosting",
+        description: "Reliable hosting solutions and domain management.",
+        colSpan: "md:col-span-2 lg:col-span-1",
     },
 ];
 
-const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: {
-            staggerChildren: 0.1,
-        },
-    },
-};
-
-const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.5, ease: "easeOut" },
-    },
-};
-
 export default function Services() {
+    const sectionRef = useRef<HTMLDivElement>(null);
+    const headingRef = useRef<HTMLDivElement>(null);
+    const gridRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            // Heading scrub reveal
+            gsap.fromTo(headingRef.current,
+                { opacity: 0, y: 40 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: headingRef.current,
+                        start: "top 85%",
+                        end: "top 55%",
+                        scrub: true,
+                    }
+                }
+            );
+
+            // Cards stagger reveal
+            if (gridRef.current) {
+                const cards = Array.from(gridRef.current.children);
+                gsap.fromTo(cards,
+                    { opacity: 0, y: 60, scale: 0.97 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                        stagger: 0.08,
+                        ease: "none",
+                        scrollTrigger: {
+                            trigger: gridRef.current,
+                            start: "top 85%",
+                            end: "top 30%",
+                            scrub: true,
+                        }
+                    }
+                );
+            }
+        }, sectionRef);
+
+        return () => ctx.revert();
+    }, []);
+
     return (
-        <section id="services" className="section-padding bg-dark-50">
+        <section ref={sectionRef} id="services" className="py-32 bg-black text-white relative">
             <div className="section-container">
                 {/* Section Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="text-center max-w-3xl mx-auto mb-16"
-                >
-                    <span className="inline-block px-4 py-2 bg-primary-100 text-primary-600 rounded-full text-sm font-semibold mb-4">
-                        Our Services
-                    </span>
-                    <h2 className="heading-2 text-dark-900 mb-4">
-                        Everything You Need to{" "}
-                        <span className="gradient-text">Grow Online</span>
+                <div ref={headingRef} className="text-center max-w-4xl mx-auto mb-20">
+                    <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight mb-6">
+                        Everything you need.<br />
+                        <span className="text-neutral-500">Built to perfection.</span>
                     </h2>
-                    <p className="text-lg text-dark-500">
+                    <p className="text-xl text-neutral-400 max-w-2xl mx-auto">
                         From concept to launch, we provide comprehensive digital solutions
                         tailored to your business needs.
                     </p>
-                </motion.div>
+                </div>
 
-                {/* Services Grid */}
-                <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-                >
-                    {services.map((service, index) => (
-                        <motion.div
+                {/* Bento Grid */}
+                <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4 lg:gap-6 auto-rows-[auto]">
+                    {services.map((service) => (
+                        <div
                             key={service.title}
-                            variants={itemVariants}
-                            className="card p-8 group"
+                            className={`group relative overflow-hidden rounded-3xl bg-[#111111] p-8 md:p-10 border border-white/5 hover:border-white/20 transition-all duration-500 ${service.colSpan}`}
                         >
-                            {/* Icon */}
-                            <div
-                                className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}
-                            >
-                                <service.icon className="w-7 h-7 text-white" />
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl group-hover:bg-white/10 transition-colors duration-500" />
+                            
+                            <div className="flex flex-col h-full justify-between relative z-10">
+                                <div>
+                                    <service.icon className="w-8 h-8 text-neutral-600 mb-6 group-hover:text-white transition-colors duration-300" />
+                                    <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">
+                                        {service.title}
+                                    </h3>
+                                    <p className="text-neutral-400 leading-relaxed max-w-sm">
+                                        {service.description}
+                                    </p>
+                                </div>
+
+                                <div className="mt-8">
+                                    <Link
+                                        href={`/${service.title.toLowerCase().replace(/ /g, "-")}`}
+                                        className="inline-flex items-center text-sm font-semibold text-white/70 hover:text-white transition-colors duration-300"
+                                    >
+                                        Learn more
+                                        <svg className="w-4 h-4 ml-1 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                        </svg>
+                                    </Link>
+                                </div>
                             </div>
-
-                            {/* Content */}
-                            <h3 className="text-xl font-bold text-dark-900 mb-3">
-                                {service.title}
-                            </h3>
-                            <p className="text-dark-500 leading-relaxed mb-4">
-                                {service.description}
-                            </p>
-
-                            {/* Learn More Link */}
-                            <Link
-                                href={`/${service.title.toLowerCase().replace(/ /g, "-")}`}
-                                className="inline-flex items-center gap-2 text-primary-500 font-semibold group-hover:gap-3 transition-all duration-300"
-                                aria-label={`Learn more about ${service.title}`}
-                            >
-                                Learn More
-                                <svg
-                                    className="w-4 h-4"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24"
-                                    aria-hidden="true"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth={2}
-                                        d="M17 8l4 4m0 0l-4 4m4-4H3"
-                                    />
-                                </svg>
-                            </Link>
-                        </motion.div>
-                    ))}
-
-                    {/* CTA Card */}
-                    <motion.div
-                        variants={itemVariants}
-                        className="card p-8 bg-gradient-to-br from-primary-500 to-primary-600 border-0"
-                    >
-                        <div className="h-full flex flex-col justify-between">
-                            <div>
-                                <h3 className="text-xl font-bold text-white mb-3">
-                                    Need Something Custom?
-                                </h3>
-                                <p className="text-primary-100 leading-relaxed mb-6">
-                                    We build tailored solutions for unique business challenges.
-                                    Let&apos;s discuss your project.
-                                </p>
-                            </div>
-                            <Link
-                                href="#contact"
-                                className="inline-flex items-center gap-2 bg-white text-primary-600 px-6 py-3 rounded-lg font-semibold hover:bg-primary-50 transition-colors duration-300 w-fit"
-                            >
-                                Contact Us
-                                <svg
-                                    className="w-4 h-4"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth={2}
-                                        d="M17 8l4 4m0 0l-4 4m4-4H3"
-                                    />
-                                </svg>
-                            </Link>
                         </div>
-                    </motion.div>
-                </motion.div>
+                    ))}
+                    
+                    <div className="group relative overflow-hidden rounded-3xl bg-neutral-900 p-8 md:p-10 border border-white/10 hover:border-white/30 transition-all duration-500 md:col-span-3 lg:col-span-2 flex flex-col justify-center items-center text-center">
+                        <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        <h3 className="text-3xl font-bold text-white mb-4 tracking-tight relative z-10">
+                            Need something completely custom?
+                        </h3>
+                        <p className="text-neutral-400 mb-8 max-w-lg relative z-10">
+                            We build tailored solutions for unique business challenges. Let&apos;s discuss your vision and turn it into reality.
+                        </p>
+                        <Link
+                            href="#contact"
+                            className="relative z-10 inline-flex items-center justify-center px-8 py-3 bg-white text-black font-medium rounded-full hover:scale-105 transition-transform duration-300"
+                        >
+                            Contact Us
+                        </Link>
+                    </div>
+                </div>
             </div>
         </section>
     );

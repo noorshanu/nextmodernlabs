@@ -1,195 +1,196 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 import {
     HiOutlineShieldCheck,
     HiOutlineLightningBolt,
     HiOutlineUserGroup,
     HiOutlineTrendingUp,
 } from "react-icons/hi";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+if (typeof window !== "undefined") {
+    gsap.registerPlugin(ScrollTrigger);
+}
 
 const reasons = [
     {
         icon: HiOutlineShieldCheck,
         title: "Trusted Partnership",
-        description:
-            "We build long-term relationships based on transparency, reliability, and mutual growth.",
+        description: "Built on transparency, reliability, and mutual growth.",
     },
     {
         icon: HiOutlineLightningBolt,
         title: "Cutting-Edge Tech",
-        description:
-            "We leverage the latest technologies to create unique and competitive advantages.",
+        description: "Leveraging the latest technologies for competitive advantages.",
     },
     {
         icon: HiOutlineUserGroup,
         title: "Expert Team",
-        description:
-            "Our seasoned professionals bring years of experience across diverse industries.",
+        description: "Seasoned professionals across diverse digital industries.",
     },
     {
         icon: HiOutlineTrendingUp,
         title: "Scalable Solutions",
-        description:
-            "Our solutions grow with your business, ensuring future-proof investments.",
+        description: "Future-proof investments that grow with your business.",
     },
 ];
 
-const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: { staggerChildren: 0.15 },
-    },
-};
-
-const itemVariants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: {
-        opacity: 1,
-        x: 0,
-        transition: { duration: 0.5, ease: "easeOut" },
-    },
-};
-
 export default function WhyUs() {
+    const sectionRef = useRef<HTMLDivElement>(null);
+    const headingRef = useRef<HTMLHeadingElement>(null);
+    const descRef = useRef<HTMLParagraphElement>(null);
+    const cardsRef = useRef<HTMLDivElement>(null);
+    const glassMetricsRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            // Scrubbing opacity for heading
+            gsap.fromTo(headingRef.current, 
+                { opacity: 0, y: 50 },
+                { 
+                    opacity: 1, 
+                    y: 0,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: headingRef.current,
+                        start: "top 85%",
+                        end: "top 50%",
+                        scrub: true,
+                    }
+                }
+            );
+
+            gsap.fromTo(descRef.current, 
+                { opacity: 0, y: 30 },
+                { 
+                    opacity: 1, 
+                    y: 0,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: descRef.current,
+                        start: "top 90%",
+                        end: "top 60%",
+                        scrub: true,
+                    }
+                }
+            );
+
+            // Stagger in the grid items
+            if (cardsRef.current) {
+                const cards = Array.from(cardsRef.current.children);
+                gsap.fromTo(cards,
+                    { opacity: 0, y: 40 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        stagger: 0.1,
+                        ease: "none",
+                        scrollTrigger: {
+                            trigger: cardsRef.current,
+                            start: "top 80%",
+                            end: "top 40%",
+                            scrub: true,
+                        }
+                    }
+                );
+            }
+
+            // Glass metrics reveal
+            gsap.fromTo(glassMetricsRef.current,
+                { y: 80, opacity: 0 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: glassMetricsRef.current,
+                        start: "top 90%",
+                        end: "top 50%",
+                        scrub: true,
+                    }
+                }
+            );
+
+        }, sectionRef);
+
+        return () => ctx.revert();
+    }, []);
+
     return (
-        <section id="about" className="section-padding bg-white">
-            <div className="section-container">
-                <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-                    {/* Left Content */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                    >
-                        <span className="inline-block px-4 py-2 bg-primary-100 text-primary-600 rounded-full text-sm font-semibold mb-4">
-                            Why Choose Us
-                        </span>
-                        <h2 className="heading-2 text-dark-900 mb-6">
-                            Your Success Is{" "}
-                            <span className="gradient-text">Our Mission</span>
+        <section ref={sectionRef} id="about" className="section-padding bg-black text-white overflow-hidden relative min-h-screen flex items-center">
+            <div className="section-container relative z-10 w-full">
+                <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
+                    
+                    {/* Left Content - Typography Driven */}
+                    <div className="flex-1">
+                        <h2 ref={headingRef} className="text-5xl md:text-6xl lg:text-8xl font-bold tracking-tight leading-[1.1] mb-8">
+                            Your success.<br/>
+                            <span className="text-neutral-600">Our mission.</span>
                         </h2>
-                        <p className="text-lg text-dark-500 mb-8">
-                            NextModernLabs is a modern digital agency focused on building
-                            scalable, high-performance digital products. We help businesses
-                            grow using clean design, smart engineering, and data-driven
-                            strategies.
+                        <p ref={descRef} className="text-xl md:text-2xl text-neutral-400 font-medium leading-relaxed max-w-2xl mb-12">
+                            We are a modern digital agency focused on building scalable, high-performance products using clean design and smart engineering.
                         </p>
 
-                        {/* Reasons List */}
-                        <motion.div
-                            variants={containerVariants}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true }}
-                            className="space-y-6"
-                        >
+                        <div ref={cardsRef} className="grid sm:grid-cols-2 gap-8">
                             {reasons.map((reason) => (
-                                <motion.div
-                                    key={reason.title}
-                                    variants={itemVariants}
-                                    className="flex gap-4 group"
-                                >
-                                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-primary-50 flex items-center justify-center group-hover:bg-primary-100 transition-colors duration-300">
-                                        <reason.icon className="w-6 h-6 text-primary-500" />
+                                <div key={reason.title} className="group">
+                                    <div className="mb-4">
+                                        <reason.icon className="w-8 h-8 text-neutral-600 group-hover:text-white transition-colors duration-300" />
                                     </div>
-                                    <div>
-                                        <h3 className="font-bold text-dark-900 mb-1">
-                                            {reason.title}
-                                        </h3>
-                                        <p className="text-dark-500 text-sm">
-                                            {reason.description}
-                                        </p>
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </motion.div>
-                    </motion.div>
-
-                    {/* Right Content - Visual Element */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                        className="relative"
-                    >
-                        <div className="relative">
-                            {/* Main Card */}
-                            <div className="bg-gradient-to-br from-primary-500 to-primary-600 rounded-3xl p-8 lg:p-10 text-white shadow-2xl shadow-primary-500/30">
-                                <div className="space-y-6">
-                                    <div className="flex items-center gap-4">
-                                        <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center backdrop-blur-sm">
-                                            <span className="text-3xl font-bold">5+</span>
-                                        </div>
-                                        <div>
-                                            <div className="text-xl font-bold">Years Experience</div>
-                                            <div className="text-primary-100">
-                                                Building digital products
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="h-px bg-white/20" />
-
-                                    <div className="grid grid-cols-2 gap-6">
-                                        <div>
-                                            <div className="text-3xl font-bold">50+</div>
-                                            <div className="text-primary-100 text-sm">
-                                                Projects Completed
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div className="text-3xl font-bold">30+</div>
-                                            <div className="text-primary-100 text-sm">
-                                                Happy Clients
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="h-px bg-white/20" />
-
-                                    <p className="text-primary-100 italic">
-                                        &quot;To become a trusted technology partner for startups
-                                        and growing companies worldwide.&quot;
+                                    <h3 className="text-xl font-bold text-white mb-2 tracking-tight">
+                                        {reason.title}
+                                    </h3>
+                                    <p className="text-neutral-500 text-sm leading-relaxed">
+                                        {reason.description}
                                     </p>
                                 </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Right Content - Sleek Glass Metrics */}
+                    <div ref={glassMetricsRef} className="w-full lg:w-[450px] relative">
+                        {/* Ambient Background Glow */}
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white/5 rounded-full blur-[100px]" />
+
+                        <div className="relative flex flex-col gap-6">
+                            {/* Glass Card 1 */}
+                            <div className="bg-[#111111]/80 backdrop-blur-2xl rounded-3xl p-10 border border-white/10 shadow-2xl">
+                                <div className="text-7xl font-bold tracking-tighter mb-2 text-white">
+                                    5+
+                                </div>
+                                <div className="text-neutral-400 font-medium text-lg">
+                                    Years Experience
+                                </div>
+                                <div className="mt-6 w-12 h-1 bg-white/20 rounded-full" />
                             </div>
 
-                            {/* Floating Badge */}
-                            <div className="absolute -top-4 -right-4 bg-white rounded-2xl shadow-xl p-4 border border-dark-100">
-                                <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                                        <svg
-                                            className="w-5 h-5 text-green-500"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            viewBox="0 0 24 24"
-                                        >
-                                            <path
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                strokeWidth={2}
-                                                d="M5 13l4 4L19 7"
-                                            />
-                                        </svg>
+                            <div className="flex gap-6">
+                                {/* Glass Card 2 */}
+                                <div className="flex-1 bg-[#111111]/80 backdrop-blur-2xl rounded-3xl p-8 border border-white/10 shadow-2xl">
+                                    <div className="text-5xl font-bold tracking-tighter mb-2 text-white">
+                                        50+
                                     </div>
-                                    <div>
-                                        <div className="font-bold text-dark-900 text-sm">
-                                            100% Satisfaction
-                                        </div>
-                                        <div className="text-dark-500 text-xs">Guaranteed</div>
+                                    <div className="text-neutral-400 text-sm font-medium">
+                                        Projects Completed
+                                    </div>
+                                </div>
+
+                                {/* Glass Card 3 */}
+                                <div className="flex-1 bg-white rounded-3xl p-8 shadow-2xl flex flex-col justify-between">
+                                    <div className="text-5xl font-bold tracking-tighter mb-2 text-black">
+                                        30+
+                                    </div>
+                                    <div className="text-black/60 text-sm font-medium">
+                                        Happy Clients
                                     </div>
                                 </div>
                             </div>
-
-                            {/* Decorative Elements */}
-                            <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-primary-100 rounded-2xl -z-10" />
-                            <div className="absolute -top-6 left-1/2 w-12 h-12 bg-violet-100 rounded-xl -z-10" />
                         </div>
-                    </motion.div>
+                    </div>
+
                 </div>
             </div>
         </section>
