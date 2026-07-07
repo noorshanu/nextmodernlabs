@@ -74,7 +74,7 @@ const values = [
 
 const founders = [
     {
-        name: "Masoom Shaik",
+        name: "Masoom sheikh",
         role: "CEO & Co-Founder",
         bio: "A visionary entrepreneur with 5+ years of experience in digital product strategy and business development. Noor leads the company's vision, client relationships, and growth strategy — turning ambitious ideas into profitable digital businesses.",
         image: "/team/founder-1.png",
@@ -122,7 +122,7 @@ const team = [
         gradient: "from-amber-500 to-orange-500",
     },
     {
-        name: "Masoom Shaik",
+        name: "Masoom sheikh",
         role: "Mobile Developer",
         image: "/team/team-4.png",
         fallback: "KV",
