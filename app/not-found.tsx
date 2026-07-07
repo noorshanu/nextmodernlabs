@@ -158,7 +158,7 @@ export default function NotFound() {
                             </Link>
                             <Link
                                 href="/#contact"
-                                className="inline-flex items-center gap-2 px-8 py-4 border border-slate-600 text-slate-300 font-semibold rounded-full hover:bg-slate-800/50 hover:border-emerald-500/50 transition-all duration-300"
+                                className="inline-flex items-center gap-2 px-8 py-4 border border-slate-600 text-slate-300 font-semibold rounded-full hover:bg-[#111111]/50 hover:border-emerald-500/50 transition-all duration-300"
                             >
                                 Contact Support
                             </Link>
@@ -172,7 +172,7 @@ export default function NotFound() {
                         transition={{ delay: 0.8 }}
                         className="mt-16 flex flex-wrap items-center justify-center gap-3"
                     >
-                        <span className="text-slate-600 text-sm mr-2">Quick links:</span>
+                        <span className="text-neutral-300 text-sm mr-2">Quick links:</span>
                         {[
                             { name: "Services", href: "/#services" },
                             { name: "Web Dev", href: "/web-development" },
@@ -183,7 +183,7 @@ export default function NotFound() {
                             <Link
                                 key={link.name}
                                 href={link.href}
-                                className="px-3 py-1.5 bg-slate-800/50 border border-slate-700/50 rounded-full text-xs text-slate-400 hover:text-emerald-400 hover:border-emerald-500/30 transition-all duration-300"
+                                className="px-3 py-1.5 bg-[#111111]/50 border border-slate-700/50 rounded-full text-xs text-slate-400 hover:text-emerald-400 hover:border-emerald-500/30 transition-all duration-300"
                             >
                                 {link.name}
                             </Link>

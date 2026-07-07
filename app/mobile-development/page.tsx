@@ -6,7 +6,6 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
-import LeadGenPopup from "../components/home/LeadGenPopup";
 import {
     SiFlutter,
     SiReact,
@@ -263,7 +262,7 @@ function StatCard({ value, suffix, label, decimal }: { value: number; suffix: st
     return (
         <motion.div ref={ref} variants={staggerItem} className="relative group">
             <div className="absolute -inset-0.5 bg-gradient-to-r from-violet-500 to-purple-600 rounded-2xl opacity-0 group-hover:opacity-30 blur transition-opacity duration-500" />
-            <div className="relative bg-slate-900/70 border border-slate-800 rounded-2xl p-6 text-center hover:border-violet-500/40 transition-all duration-300">
+            <div className="relative bg-black/70 border border-slate-800 rounded-2xl p-6 text-center hover:border-violet-500/40 transition-all duration-300">
                 <div className="text-3xl sm:text-4xl font-bold text-white mb-1">
                     {decimal ? count.toFixed(1) : count}
                     <span className="text-violet-400">{suffix}</span>
@@ -280,7 +279,6 @@ function StatCard({ value, suffix, label, decimal }: { value: number; suffix: st
 
 export default function MobileDevelopmentPage() {
     const [activeProject, setActiveProject] = useState(0);
-    const [showPopup, setShowPopup] = useState(false);
     const heroRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
     const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
@@ -365,7 +363,6 @@ export default function MobileDevelopmentPage() {
                                 className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-12"
                             >
                                 <button
-                                    onClick={() => setShowPopup(true)}
                                     className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-violet-600 to-purple-600 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-violet-500/40 transition-all duration-300"
                                 >
                                     Build Your App
@@ -375,7 +372,7 @@ export default function MobileDevelopmentPage() {
                                 </button>
                                 <Link
                                     href="#projects"
-                                    className="inline-flex items-center gap-2 px-8 py-4 border border-slate-600 text-slate-300 font-semibold rounded-full hover:bg-slate-800/50 hover:border-violet-500/50 transition-all duration-300"
+                                    className="inline-flex items-center gap-2 px-8 py-4 border border-slate-600 text-slate-300 font-semibold rounded-full hover:bg-[#111111]/50 hover:border-violet-500/50 transition-all duration-300"
                                 >
                                     See Our Apps
                                 </Link>
@@ -388,12 +385,12 @@ export default function MobileDevelopmentPage() {
                                 transition={{ delay: 0.5 }}
                                 className="flex items-center justify-center lg:justify-start gap-3"
                             >
-                                <span className="text-slate-500 text-sm">Available on:</span>
+                                <span className="text-neutral-400 text-sm">Available on:</span>
                                 <div className="flex gap-2">
-                                    <span className="px-3 py-1.5 bg-slate-800/60 border border-slate-700/50 rounded-full text-xs text-slate-300 font-medium flex items-center gap-1.5">
+                                    <span className="px-3 py-1.5 bg-[#111111]/60 border border-slate-700/50 rounded-full text-xs text-slate-300 font-medium flex items-center gap-1.5">
                                         <SiAppstore className="w-3.5 h-3.5" /> iOS
                                     </span>
-                                    <span className="px-3 py-1.5 bg-slate-800/60 border border-slate-700/50 rounded-full text-xs text-slate-300 font-medium flex items-center gap-1.5">
+                                    <span className="px-3 py-1.5 bg-[#111111]/60 border border-slate-700/50 rounded-full text-xs text-slate-300 font-medium flex items-center gap-1.5">
                                         <SiGoogleplay className="w-3.5 h-3.5" /> Android
                                     </span>
                                 </div>
@@ -412,9 +409,9 @@ export default function MobileDevelopmentPage() {
 
                             {/* Phone frame */}
                             <div className="relative w-[280px] sm:w-[300px]">
-                                <div className="relative bg-slate-900 rounded-[3rem] p-3 border-2 border-slate-700/60 shadow-2xl shadow-violet-500/10">
+                                <div className="relative bg-black rounded-[3rem] p-3 border-2 border-slate-700/60 shadow-2xl shadow-violet-500/10">
                                     {/* Notch */}
-                                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-slate-900 rounded-b-2xl z-20" />
+                                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-black rounded-b-2xl z-20" />
                                     <div className="relative overflow-hidden rounded-[2.3rem] aspect-[9/19.5]">
                                         <Image
                                             src={projects[activeProject].image}
@@ -438,7 +435,7 @@ export default function MobileDevelopmentPage() {
                                 <motion.div
                                     animate={{ y: [0, -8, 0] }}
                                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                                    className="absolute -left-4 sm:-left-8 bottom-24 px-4 py-2 bg-slate-800 border border-violet-500/30 text-violet-400 text-sm font-semibold rounded-full shadow-lg"
+                                    className="absolute -left-4 sm:-left-8 bottom-24 px-4 py-2 bg-[#111111] border border-violet-500/30 text-violet-400 text-sm font-semibold rounded-full shadow-lg"
                                 >
                                     📱 {projects[activeProject].platform}
                                 </motion.div>
@@ -474,7 +471,7 @@ export default function MobileDevelopmentPage() {
                     viewport={{ once: true }}
                     className="section-container mb-8"
                 >
-                    <p className="text-center text-slate-500 text-sm font-semibold uppercase tracking-widest">
+                    <p className="text-center text-neutral-400 text-sm font-semibold uppercase tracking-widest">
                         Our Mobile Tech Stack
                     </p>
                 </motion.div>
@@ -486,10 +483,10 @@ export default function MobileDevelopmentPage() {
                     <div className="flex animate-marquee" style={{ width: "max-content" }}>
                         {[...technologies, ...technologies].map((tech, i) => (
                             <div key={`${tech.name}-${i}`} className="flex flex-col items-center justify-center mx-8 group cursor-pointer">
-                                <div className="w-16 h-16 flex items-center justify-center rounded-2xl bg-slate-800/50 border border-slate-700/50 group-hover:border-violet-500/50 group-hover:bg-slate-800 transition-all duration-300 mb-2">
+                                <div className="w-16 h-16 flex items-center justify-center rounded-2xl bg-[#111111]/50 border border-slate-700/50 group-hover:border-violet-500/50 group-hover:bg-[#111111] transition-all duration-300 mb-2">
                                     <tech.icon className="w-8 h-8 transition-all duration-300 group-hover:scale-110" style={{ color: tech.color }} />
                                 </div>
-                                <span className="text-xs text-slate-500 group-hover:text-slate-300 transition-colors font-medium">{tech.name}</span>
+                                <span className="text-xs text-neutral-400 group-hover:text-slate-300 transition-colors font-medium">{tech.name}</span>
                             </div>
                         ))}
                     </div>
@@ -588,7 +585,7 @@ export default function MobileDevelopmentPage() {
                                     transition={{ delay: i * 0.1, duration: 0.5 }}
                                     className="flex-shrink-0 w-[340px] snap-center group"
                                 >
-                                    <div className="relative bg-slate-900/60 border border-slate-800 rounded-3xl overflow-hidden hover:border-violet-500/30 transition-all duration-500">
+                                    <div className="relative bg-black/60 border border-slate-800 rounded-3xl overflow-hidden hover:border-violet-500/30 transition-all duration-500">
                                         {/* Image */}
                                         <div className="relative h-56 overflow-hidden">
                                             <Image
@@ -597,14 +594,14 @@ export default function MobileDevelopmentPage() {
                                                 fill
                                                 className="object-cover group-hover:scale-105 transition-transform duration-700"
                                             />
-                                            <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60" />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60" />
                                             <div className="absolute top-3 left-3 flex gap-2">
                                                 <span className="px-2.5 py-1 bg-violet-500/80 backdrop-blur-sm text-white text-xs font-semibold rounded-full">
                                                     {project.category}
                                                 </span>
                                             </div>
                                             <div className="absolute bottom-3 right-3">
-                                                <span className="px-2.5 py-1 bg-slate-900/80 backdrop-blur-sm text-slate-300 text-xs font-medium rounded-full border border-slate-700/50">
+                                                <span className="px-2.5 py-1 bg-black/80 backdrop-blur-sm text-slate-300 text-xs font-medium rounded-full border border-slate-700/50">
                                                     {project.platform}
                                                 </span>
                                             </div>
@@ -615,7 +612,7 @@ export default function MobileDevelopmentPage() {
                                             <p className="text-slate-400 text-sm leading-relaxed mb-4">{project.description}</p>
                                             <div className="flex flex-wrap gap-2">
                                                 {project.tech.map((t) => (
-                                                    <span key={t} className="px-2.5 py-1 bg-slate-800 border border-slate-700 text-slate-300 text-xs font-medium rounded-full">
+                                                    <span key={t} className="px-2.5 py-1 bg-[#111111] border border-slate-700 text-slate-300 text-xs font-medium rounded-full">
                                                         {t}
                                                     </span>
                                                 ))}
@@ -626,7 +623,7 @@ export default function MobileDevelopmentPage() {
                             ))}
                         </div>
                         {/* Scroll hint */}
-                        <div className="flex items-center justify-center gap-2 mt-4 text-slate-500 text-sm">
+                        <div className="flex items-center justify-center gap-2 mt-4 text-neutral-400 text-sm">
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
                             </svg>
@@ -692,7 +689,7 @@ export default function MobileDevelopmentPage() {
 
                                         {/* Card */}
                                         <div className={`w-full md:w-[calc(50%-3rem)] group`}>
-                                            <div className={`bg-slate-900/50 border border-slate-800 rounded-2xl p-6 hover:border-violet-500/40 transition-all duration-500`}>
+                                            <div className={`bg-black/50 border border-slate-800 rounded-2xl p-6 hover:border-violet-500/40 transition-all duration-500`}>
                                                 <div className="flex items-center gap-3 mb-3">
                                                     <span className={`text-sm font-bold px-3 py-1 rounded-full bg-gradient-to-r ${step.color} text-white`}>
                                                         Phase {step.phase}
@@ -839,8 +836,7 @@ export default function MobileDevelopmentPage() {
                                 className="flex flex-col sm:flex-row items-center justify-center gap-4"
                             >
                                 <button
-                                    onClick={() => setShowPopup(true)}
-                                    className="group inline-flex items-center gap-2 px-8 py-4 bg-white text-purple-700 font-bold rounded-full hover:shadow-2xl hover:shadow-white/20 hover:-translate-y-0.5 transition-all duration-300"
+                                    className="group inline-flex items-center gap-2 px-8 py-4 bg-black text-purple-700 font-bold rounded-full hover:shadow-2xl hover:shadow-white/20 hover:-translate-y-0.5 transition-all duration-300"
                                 >
                                     Get Free Consultation
                                     <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -860,8 +856,6 @@ export default function MobileDevelopmentPage() {
             </section>
 
             <Footer />
-
-            <LeadGenPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />
         </main>
     );
 }

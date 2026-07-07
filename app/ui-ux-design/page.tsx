@@ -6,7 +6,6 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
-import LeadGenPopup from "../components/home/LeadGenPopup";
 import {
     SiFigma,
     SiAdobexd,
@@ -289,7 +288,7 @@ function StatCard({ value, suffix, label }: { value: number; suffix: string; lab
     return (
         <motion.div ref={ref} variants={staggerItem} className="relative group">
             <div className="absolute -inset-0.5 bg-gradient-to-r from-rose-500 to-pink-600 rounded-2xl opacity-0 group-hover:opacity-30 blur transition-opacity duration-500" />
-            <div className="relative bg-slate-900/70 border border-slate-800 rounded-2xl p-6 text-center hover:border-rose-500/40 transition-all duration-300">
+            <div className="relative bg-black/70 border border-slate-800 rounded-2xl p-6 text-center hover:border-rose-500/40 transition-all duration-300">
                 <div className="text-3xl sm:text-4xl font-bold text-white mb-1">
                     {count}
                     <span className="text-rose-400">{suffix}</span>
@@ -306,7 +305,6 @@ function StatCard({ value, suffix, label }: { value: number; suffix: string; lab
 
 export default function UIUXDesignPage() {
     const [sliderIndex, setSliderIndex] = useState(0);
-    const [showPopup, setShowPopup] = useState(false);
     const maxSlide = projects.length - 1;
     const heroRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
@@ -392,7 +390,6 @@ export default function UIUXDesignPage() {
                                 className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-12"
                             >
                                 <button
-                                    onClick={() => setShowPopup(true)}
                                     className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-rose-600 to-pink-600 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-rose-500/40 transition-all duration-300"
                                 >
                                     Start Your Design
@@ -402,7 +399,7 @@ export default function UIUXDesignPage() {
                                 </button>
                                 <Link
                                     href="#projects"
-                                    className="inline-flex items-center gap-2 px-8 py-4 border border-slate-600 text-slate-300 font-semibold rounded-full hover:bg-slate-800/50 hover:border-rose-500/50 transition-all duration-300"
+                                    className="inline-flex items-center gap-2 px-8 py-4 border border-slate-600 text-slate-300 font-semibold rounded-full hover:bg-[#111111]/50 hover:border-rose-500/50 transition-all duration-300"
                                 >
                                     View Portfolio
                                 </Link>
@@ -415,15 +412,15 @@ export default function UIUXDesignPage() {
                                 transition={{ delay: 0.5 }}
                                 className="flex items-center justify-center lg:justify-start gap-3"
                             >
-                                <span className="text-slate-500 text-sm">We design for:</span>
+                                <span className="text-neutral-400 text-sm">We design for:</span>
                                 <div className="flex gap-2">
-                                    <span className="px-3 py-1.5 bg-slate-800/60 border border-slate-700/50 rounded-full text-xs text-slate-300 font-medium flex items-center gap-1.5">
+                                    <span className="px-3 py-1.5 bg-[#111111]/60 border border-slate-700/50 rounded-full text-xs text-slate-300 font-medium flex items-center gap-1.5">
                                         🖥️ Web
                                     </span>
-                                    <span className="px-3 py-1.5 bg-slate-800/60 border border-slate-700/50 rounded-full text-xs text-slate-300 font-medium flex items-center gap-1.5">
+                                    <span className="px-3 py-1.5 bg-[#111111]/60 border border-slate-700/50 rounded-full text-xs text-slate-300 font-medium flex items-center gap-1.5">
                                         📱 Mobile
                                     </span>
-                                    <span className="px-3 py-1.5 bg-slate-800/60 border border-slate-700/50 rounded-full text-xs text-slate-300 font-medium flex items-center gap-1.5">
+                                    <span className="px-3 py-1.5 bg-[#111111]/60 border border-slate-700/50 rounded-full text-xs text-slate-300 font-medium flex items-center gap-1.5">
                                         🎨 Brand
                                     </span>
                                 </div>
@@ -443,37 +440,37 @@ export default function UIUXDesignPage() {
                             {/* Design tool mockup */}
                             <div className="relative w-full max-w-md">
                                 <div className="absolute -inset-8 bg-gradient-to-r from-rose-500/20 to-pink-500/20 rounded-3xl blur-3xl" />
-                                <div className="relative bg-slate-900/80 backdrop-blur-sm rounded-2xl border border-slate-700/60 p-6 shadow-2xl">
+                                <div className="relative bg-black/80 backdrop-blur-sm rounded-2xl border border-slate-700/60 p-6 shadow-2xl">
                                     {/* Window header */}
                                     <div className="flex items-center gap-2 mb-5">
                                         <div className="w-3 h-3 rounded-full bg-red-500" />
                                         <div className="w-3 h-3 rounded-full bg-yellow-500" />
                                         <div className="w-3 h-3 rounded-full bg-green-500" />
-                                        <span className="ml-3 text-slate-500 text-sm font-mono">design-system.fig</span>
+                                        <span className="ml-3 text-neutral-400 text-sm font-mono">design-system.fig</span>
                                     </div>
 
                                     {/* Design mockup content */}
                                     <div className="space-y-4">
                                         {/* Color palette */}
                                         <div>
-                                            <p className="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">Color Palette</p>
+                                            <p className="text-neutral-400 text-xs font-semibold uppercase tracking-wider mb-2">Color Palette</p>
                                             <div className="flex gap-2">
-                                                {["bg-rose-500", "bg-pink-500", "bg-fuchsia-500", "bg-violet-500", "bg-slate-800", "bg-white"].map((c, i) => (
-                                                    <div key={i} className={`w-10 h-10 rounded-xl ${c} ${c === "bg-white" ? "border border-slate-700" : ""}`} />
+                                                {["bg-rose-500", "bg-pink-500", "bg-fuchsia-500", "bg-violet-500", "bg-[#111111]", "bg-black"].map((c, i) => (
+                                                    <div key={i} className={`w-10 h-10 rounded-xl ${c} ${c === "bg-black" ? "border border-slate-700" : ""}`} />
                                                 ))}
                                             </div>
                                         </div>
 
                                         {/* Typography */}
                                         <div>
-                                            <p className="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">Typography</p>
+                                            <p className="text-neutral-400 text-xs font-semibold uppercase tracking-wider mb-2">Typography</p>
                                             <p className="text-white text-2xl font-bold mb-1">Heading Bold</p>
                                             <p className="text-slate-300 text-sm">Body text — Inter, 16px / 1.6</p>
                                         </div>
 
                                         {/* Component preview */}
                                         <div>
-                                            <p className="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">Components</p>
+                                            <p className="text-neutral-400 text-xs font-semibold uppercase tracking-wider mb-2">Components</p>
                                             <div className="flex gap-2 items-center">
                                                 <div className="px-4 py-2 bg-gradient-to-r from-rose-500 to-pink-500 rounded-full text-white text-xs font-semibold">Primary Button</div>
                                                 <div className="px-4 py-2 border border-slate-600 rounded-full text-slate-300 text-xs font-semibold">Secondary</div>
@@ -496,7 +493,7 @@ export default function UIUXDesignPage() {
                                 <motion.div
                                     animate={{ y: [0, 8, 0] }}
                                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                                    className="absolute -bottom-4 -left-4 px-4 py-2 bg-slate-800 border border-rose-500/30 rounded-full text-rose-400 text-sm font-semibold shadow-lg"
+                                    className="absolute -bottom-4 -left-4 px-4 py-2 bg-[#111111] border border-rose-500/30 rounded-full text-rose-400 text-sm font-semibold shadow-lg"
                                 >
                                     ✨ User-Centered
                                 </motion.div>
@@ -532,7 +529,7 @@ export default function UIUXDesignPage() {
                     viewport={{ once: true }}
                     className="section-container mb-8"
                 >
-                    <p className="text-center text-slate-500 text-sm font-semibold uppercase tracking-widest">
+                    <p className="text-center text-neutral-400 text-sm font-semibold uppercase tracking-widest">
                         Design Tools We Master
                     </p>
                 </motion.div>
@@ -544,10 +541,10 @@ export default function UIUXDesignPage() {
                     <div className="flex animate-marquee" style={{ width: "max-content" }}>
                         {[...technologies, ...technologies].map((tech, i) => (
                             <div key={`${tech.name}-${i}`} className="flex flex-col items-center justify-center mx-8 group cursor-pointer">
-                                <div className="w-16 h-16 flex items-center justify-center rounded-2xl bg-slate-800/50 border border-slate-700/50 group-hover:border-rose-500/50 group-hover:bg-slate-800 transition-all duration-300 mb-2">
+                                <div className="w-16 h-16 flex items-center justify-center rounded-2xl bg-[#111111]/50 border border-slate-700/50 group-hover:border-rose-500/50 group-hover:bg-[#111111] transition-all duration-300 mb-2">
                                     <tech.icon className="w-8 h-8 transition-all duration-300 group-hover:scale-110" style={{ color: tech.color }} />
                                 </div>
-                                <span className="text-xs text-slate-500 group-hover:text-slate-300 transition-colors font-medium">{tech.name}</span>
+                                <span className="text-xs text-neutral-400 group-hover:text-slate-300 transition-colors font-medium">{tech.name}</span>
                             </div>
                         ))}
                     </div>
@@ -644,7 +641,7 @@ export default function UIUXDesignPage() {
                             >
                                 {projects.map((project) => (
                                     <div key={project.title} className="w-full flex-shrink-0 px-2">
-                                        <div className="grid md:grid-cols-2 gap-8 bg-slate-900/60 backdrop-blur-sm border border-slate-800 rounded-3xl overflow-hidden">
+                                        <div className="grid md:grid-cols-2 gap-8 bg-black/60 backdrop-blur-sm border border-slate-800 rounded-3xl overflow-hidden">
                                             {/* Image */}
                                             <div className="relative h-64 md:h-96 overflow-hidden">
                                                 <Image
@@ -653,7 +650,7 @@ export default function UIUXDesignPage() {
                                                     fill
                                                     className="object-cover hover:scale-105 transition-transform duration-700"
                                                 />
-                                                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent" />
+                                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                                                 <div className="absolute top-4 left-4">
                                                     <span className="px-3 py-1 bg-rose-500/90 text-white text-xs font-semibold rounded-full backdrop-blur-sm">
                                                         {project.category}
@@ -672,7 +669,7 @@ export default function UIUXDesignPage() {
                                                     {project.tech.map((t) => (
                                                         <span
                                                             key={t}
-                                                            className="px-3 py-1 bg-slate-800 border border-slate-700 text-slate-300 text-xs font-medium rounded-full"
+                                                            className="px-3 py-1 bg-[#111111] border border-slate-700 text-slate-300 text-xs font-medium rounded-full"
                                                         >
                                                             {t}
                                                         </span>
@@ -778,7 +775,7 @@ export default function UIUXDesignPage() {
 
                                         {/* Card */}
                                         <div className={`w-full md:w-[calc(50%-3rem)] group`}>
-                                            <div className={`bg-slate-900/50 border border-slate-800 rounded-2xl p-6 hover:border-rose-500/40 transition-all duration-500`}>
+                                            <div className={`bg-black/50 border border-slate-800 rounded-2xl p-6 hover:border-rose-500/40 transition-all duration-500`}>
                                                 <div className="flex items-center gap-3 mb-3">
                                                     <span className={`text-sm font-bold px-3 py-1 rounded-full bg-gradient-to-r ${step.color} text-white`}>
                                                         Phase {step.phase}
@@ -925,8 +922,7 @@ export default function UIUXDesignPage() {
                                 className="flex flex-col sm:flex-row items-center justify-center gap-4"
                             >
                                 <button
-                                    onClick={() => setShowPopup(true)}
-                                    className="group inline-flex items-center gap-2 px-8 py-4 bg-white text-pink-700 font-bold rounded-full hover:shadow-2xl hover:shadow-white/20 hover:-translate-y-0.5 transition-all duration-300"
+                                    className="group inline-flex items-center gap-2 px-8 py-4 bg-black text-pink-700 font-bold rounded-full hover:shadow-2xl hover:shadow-white/20 hover:-translate-y-0.5 transition-all duration-300"
                                 >
                                     Get Free Consultation
                                     <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -946,8 +942,6 @@ export default function UIUXDesignPage() {
             </section>
 
             <Footer />
-
-            <LeadGenPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />
         </main>
     );
 }

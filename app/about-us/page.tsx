@@ -6,7 +6,6 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
-import LeadGenPopup from "../components/home/LeadGenPopup";
 import {
     HiOutlineLightBulb,
     HiOutlineGlobeAlt,
@@ -271,7 +270,6 @@ function Avatar({ src, alt, fallback, gradient, size = "lg" }: {
    ──────────────────────────────────────────────── */
 
 export default function AboutUsPage() {
-    const [showPopup, setShowPopup] = useState(false);
     const heroRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
     const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
@@ -347,7 +345,6 @@ export default function AboutUsPage() {
                                 className="flex flex-col sm:flex-row gap-4"
                             >
                                 <button
-                                    onClick={() => setShowPopup(true)}
                                     className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-bold rounded-full hover:shadow-2xl hover:shadow-cyan-500/40 hover:-translate-y-0.5 transition-all duration-300"
                                 >
                                     Work With Us
@@ -355,7 +352,7 @@ export default function AboutUsPage() {
                                 </button>
                                 <Link
                                     href="#team"
-                                    className="inline-flex items-center gap-2 px-8 py-4 border border-slate-600 text-slate-300 font-semibold rounded-full hover:bg-slate-800/50 hover:border-cyan-500/50 transition-all duration-300"
+                                    className="inline-flex items-center gap-2 px-8 py-4 border border-slate-600 text-slate-300 font-semibold rounded-full hover:bg-[#111111]/50 hover:border-cyan-500/50 transition-all duration-300"
                                 >
                                     Meet the Team
                                 </Link>
@@ -370,21 +367,21 @@ export default function AboutUsPage() {
                             className="relative hidden lg:block"
                         >
                             <div className="absolute -inset-8 bg-gradient-to-r from-cyan-500/15 to-teal-500/15 rounded-3xl blur-3xl" />
-                            <div className="relative bg-slate-900/80 backdrop-blur-sm rounded-3xl border border-slate-700/60 p-8 shadow-2xl">
+                            <div className="relative bg-black/80 backdrop-blur-sm rounded-3xl border border-slate-700/60 p-8 shadow-2xl">
                                 {/* Header */}
                                 <div className="flex items-center gap-2 mb-6">
                                     <div className="w-3 h-3 rounded-full bg-red-500" />
                                     <div className="w-3 h-3 rounded-full bg-yellow-500" />
                                     <div className="w-3 h-3 rounded-full bg-green-500" />
-                                    <span className="ml-3 text-slate-500 text-sm font-mono">company-stats.json</span>
+                                    <span className="ml-3 text-neutral-400 text-sm font-mono">company-stats.json</span>
                                 </div>
 
                                 {/* Stats grid */}
                                 <div className="grid grid-cols-2 gap-4 mb-6">
                                     {stats.map((stat) => (
-                                        <div key={stat.label} className="bg-slate-800/60 rounded-xl p-4 border border-slate-700/50">
+                                        <div key={stat.label} className="bg-[#111111]/60 rounded-xl p-4 border border-slate-700/50">
                                             <div className="text-3xl font-bold text-white mb-1">{stat.value}</div>
-                                            <div className="text-slate-500 text-xs font-medium">{stat.label}</div>
+                                            <div className="text-neutral-400 text-xs font-medium">{stat.label}</div>
                                         </div>
                                     ))}
                                 </div>
@@ -471,7 +468,7 @@ export default function AboutUsPage() {
 
                             <div className="mt-8 flex flex-wrap gap-3">
                                 {["Est. 2020", "Bangalore, India", "Remote-First", "20+ Team Members"].map((t) => (
-                                    <span key={t} className="flex items-center gap-2 px-4 py-2 bg-slate-800/60 border border-slate-700/50 text-slate-300 text-sm rounded-full">
+                                    <span key={t} className="flex items-center gap-2 px-4 py-2 bg-[#111111]/60 border border-slate-700/50 text-slate-300 text-sm rounded-full">
                                         <HiOutlineCheckCircle className="w-4 h-4 text-emerald-400" />
                                         {t}
                                     </span>
@@ -489,12 +486,12 @@ export default function AboutUsPage() {
                         >
                             {values.map((value) => (
                                 <motion.div key={value.title} variants={staggerItem} className="group">
-                                    <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 hover:border-slate-700 transition-all duration-300 h-full">
+                                    <div className="bg-black/60 border border-slate-800 rounded-2xl p-5 hover:border-slate-700 transition-all duration-300 h-full">
                                         <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${value.gradient} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300`}>
                                             <value.icon className="w-5 h-5 text-white" />
                                         </div>
                                         <h3 className="text-white font-bold text-sm mb-1">{value.title}</h3>
-                                        <p className="text-slate-500 text-xs leading-relaxed">{value.description}</p>
+                                        <p className="text-neutral-400 text-xs leading-relaxed">{value.description}</p>
                                     </div>
                                 </motion.div>
                             ))}
@@ -538,7 +535,7 @@ export default function AboutUsPage() {
                             className="relative group"
                         >
                             <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-3xl opacity-0 group-hover:opacity-20 blur transition-opacity duration-500" />
-                            <div className="relative bg-slate-900/60 border border-slate-800 rounded-3xl p-10 h-full hover:border-cyan-500/30 transition-all duration-300">
+                            <div className="relative bg-black/60 border border-slate-800 rounded-3xl p-10 h-full hover:border-cyan-500/30 transition-all duration-300">
                                 <div className="text-5xl mb-6">🔭</div>
                                 <div className="inline-block px-3 py-1 bg-cyan-500/15 border border-cyan-500/30 rounded-full text-cyan-400 text-xs font-bold mb-4 uppercase tracking-wider">
                                     Vision
@@ -550,7 +547,7 @@ export default function AboutUsPage() {
                                     where ambitious ideas meet exceptional execution.
                                 </p>
                                 <div className="mt-8 pt-6 border-t border-slate-800">
-                                    <p className="text-slate-500 text-sm italic">
+                                    <p className="text-neutral-400 text-sm italic">
                                         &ldquo;Technology is the great equaliser. We exist to make sure more
                                         businesses can use it to their full potential.&rdquo;
                                     </p>
@@ -568,7 +565,7 @@ export default function AboutUsPage() {
                             className="relative group"
                         >
                             <div className="absolute -inset-0.5 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-3xl opacity-0 group-hover:opacity-20 blur transition-opacity duration-500" />
-                            <div className="relative bg-slate-900/60 border border-slate-800 rounded-3xl p-10 h-full hover:border-emerald-500/30 transition-all duration-300">
+                            <div className="relative bg-black/60 border border-slate-800 rounded-3xl p-10 h-full hover:border-emerald-500/30 transition-all duration-300">
                                 <div className="text-5xl mb-6">🎯</div>
                                 <div className="inline-block px-3 py-1 bg-emerald-500/15 border border-emerald-500/30 rounded-full text-emerald-400 text-xs font-bold mb-4 uppercase tracking-wider">
                                     Mission
@@ -629,7 +626,7 @@ export default function AboutUsPage() {
                                 className="group relative"
                             >
                                 <div className={`absolute -inset-0.5 bg-gradient-to-r ${founder.gradient} rounded-3xl opacity-0 group-hover:opacity-20 blur transition-opacity duration-500`} />
-                                <div className="relative bg-slate-900/60 border border-slate-800 rounded-3xl p-8 hover:border-slate-700 transition-all duration-300">
+                                <div className="relative bg-black/60 border border-slate-800 rounded-3xl p-8 hover:border-slate-700 transition-all duration-300">
                                     <div className="flex items-start gap-6 mb-6">
                                         {/* Avatar */}
                                         <div className="relative flex-shrink-0">
@@ -661,7 +658,7 @@ export default function AboutUsPage() {
                                                         key={label}
                                                         href={href}
                                                         aria-label={label}
-                                                        className="w-8 h-8 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 hover:text-white hover:border-cyan-500/50 transition-all duration-300"
+                                                        className="w-8 h-8 rounded-lg bg-[#111111] border border-slate-700 flex items-center justify-center text-slate-400 hover:text-white hover:border-cyan-500/50 transition-all duration-300"
                                                     >
                                                         <Icon className="w-3.5 h-3.5" />
                                                     </a>
@@ -675,7 +672,7 @@ export default function AboutUsPage() {
                                     {/* Tags */}
                                     <div className="flex flex-wrap gap-2">
                                         {founder.tags.map((tag) => (
-                                            <span key={tag} className="px-3 py-1 bg-slate-800/80 border border-slate-700/60 text-slate-300 text-xs font-medium rounded-full">
+                                            <span key={tag} className="px-3 py-1 bg-[#111111]/80 border border-slate-700/60 text-slate-300 text-xs font-medium rounded-full">
                                                 {tag}
                                             </span>
                                         ))}
@@ -734,7 +731,7 @@ export default function AboutUsPage() {
                                     >
                                         {/* Card — half width on desktop */}
                                         <div className={`flex-1 sm:w-[calc(50%-3rem)] pl-16 sm:pl-0 ${isLeft ? "sm:pr-12" : "sm:pl-12"}`}>
-                                            <div className={`relative bg-slate-900/60 border rounded-2xl p-6 transition-all duration-300 ${milestone.done ? "border-slate-700 hover:border-cyan-500/30" : "border-dashed border-slate-700/60"}`}>
+                                            <div className={`relative bg-black/60 border rounded-2xl p-6 transition-all duration-300 ${milestone.done ? "border-slate-700 hover:border-cyan-500/30" : "border-dashed border-slate-700/60"}`}>
                                                 {/* Year + quarter */}
                                                 <div className="flex items-center gap-3 mb-3">
                                                     <span className="text-cyan-400 font-bold text-sm">{milestone.year}</span>
@@ -800,11 +797,11 @@ export default function AboutUsPage() {
                                     </div>
                                     {/* Online dot */}
                                     <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-emerald-500 rounded-full border-2 border-[#0c0c18] flex items-center justify-center">
-                                        <div className="w-2 h-2 bg-white rounded-full" />
+                                        <div className="w-2 h-2 bg-black rounded-full" />
                                     </div>
                                 </div>
                                 <h3 className="text-white font-semibold text-sm mb-1">{member.name}</h3>
-                                <p className="text-slate-500 text-xs leading-tight">{member.role}</p>
+                                <p className="text-neutral-400 text-xs leading-tight">{member.role}</p>
                             </motion.div>
                         ))}
 
@@ -813,7 +810,7 @@ export default function AboutUsPage() {
                             <div className="w-20 h-20 mx-auto rounded-2xl border-2 border-dashed border-slate-600 group-hover:border-cyan-500/60 flex items-center justify-center mb-4 transition-all duration-300">
                                 <span className="text-2xl">✨</span>
                             </div>
-                            <p className="text-slate-500 text-xs font-medium">Could be you!</p>
+                            <p className="text-neutral-400 text-xs font-medium">Could be you!</p>
                             <Link href="#contact" className="text-cyan-400 text-xs hover:text-cyan-300 transition-colors">
                                 We&apos;re hiring →
                             </Link>
@@ -833,7 +830,7 @@ export default function AboutUsPage() {
                             { icon: "⚡", text: "Async-first with daily standups" },
                             { icon: "🎉", text: "Annual team retreats & offsites" },
                         ].map((item) => (
-                            <div key={item.text} className="bg-slate-900/40 border border-slate-800 rounded-2xl p-5 text-center">
+                            <div key={item.text} className="bg-black/40 border border-slate-800 rounded-2xl p-5 text-center">
                                 <div className="text-3xl mb-2">{item.icon}</div>
                                 <p className="text-slate-400 text-xs leading-relaxed">{item.text}</p>
                             </div>
@@ -891,8 +888,7 @@ export default function AboutUsPage() {
                                 className="flex flex-col sm:flex-row items-center justify-center gap-4"
                             >
                                 <button
-                                    onClick={() => setShowPopup(true)}
-                                    className="group inline-flex items-center gap-2 px-10 py-4 bg-white text-teal-700 font-bold rounded-full hover:shadow-2xl hover:shadow-white/30 hover:-translate-y-0.5 transition-all duration-300"
+                                    className="group inline-flex items-center gap-2 px-10 py-4 bg-black text-teal-700 font-bold rounded-full hover:shadow-2xl hover:shadow-white/30 hover:-translate-y-0.5 transition-all duration-300"
                                 >
                                     Get Free Consultation
                                     <HiOutlineArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -910,7 +906,6 @@ export default function AboutUsPage() {
             </section>
 
             <Footer />
-            <LeadGenPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />
         </main>
     );
 }

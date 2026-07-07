@@ -35,7 +35,7 @@ export default function CookiePolicyPage() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="max-w-4xl mx-auto bg-slate-900/40 border border-slate-800 rounded-2xl p-8 md:p-12"
+                        className="max-w-4xl mx-auto bg-black/40 border border-slate-800 rounded-2xl p-8 md:p-12"
                     >
                         <div className="prose prose-invert prose-slate max-w-none space-y-8">
                             <div>
@@ -49,28 +49,28 @@ export default function CookiePolicyPage() {
                                 <h2 className="text-2xl font-bold text-white mb-3">Types of Cookies We Use</h2>
 
                                 <div className="space-y-5 mt-4">
-                                    <div className="bg-slate-800/40 rounded-xl p-5 border border-slate-700/50">
+                                    <div className="bg-[#111111]/40 rounded-xl p-5 border border-slate-700/50">
                                         <h3 className="text-lg font-semibold text-white mb-2">🔧 Essential Cookies</h3>
                                         <p className="text-slate-400 text-sm leading-relaxed">
                                             Required for basic website functionality. These cannot be disabled as they are necessary for the site to work properly, including navigation, form submissions, and security features.
                                         </p>
                                     </div>
 
-                                    <div className="bg-slate-800/40 rounded-xl p-5 border border-slate-700/50">
+                                    <div className="bg-[#111111]/40 rounded-xl p-5 border border-slate-700/50">
                                         <h3 className="text-lg font-semibold text-white mb-2">📊 Analytics Cookies</h3>
                                         <p className="text-slate-400 text-sm leading-relaxed">
                                             Help us understand how visitors interact with our website by collecting anonymous data such as pages visited, time spent on pages, and referral sources. We use Google Analytics for this purpose.
                                         </p>
                                     </div>
 
-                                    <div className="bg-slate-800/40 rounded-xl p-5 border border-slate-700/50">
+                                    <div className="bg-[#111111]/40 rounded-xl p-5 border border-slate-700/50">
                                         <h3 className="text-lg font-semibold text-white mb-2">🎯 Marketing Cookies</h3>
                                         <p className="text-slate-400 text-sm leading-relaxed">
                                             Used to track visitors across websites and display relevant advertisements. These include cookies from advertising partners such as Google Ads and Meta Pixel.
                                         </p>
                                     </div>
 
-                                    <div className="bg-slate-800/40 rounded-xl p-5 border border-slate-700/50">
+                                    <div className="bg-[#111111]/40 rounded-xl p-5 border border-slate-700/50">
                                         <h3 className="text-lg font-semibold text-white mb-2">⚙️ Preference Cookies</h3>
                                         <p className="text-slate-400 text-sm leading-relaxed">
                                             Remember your settings and preferences such as language, region, and display options to provide a more personalized experience on return visits.

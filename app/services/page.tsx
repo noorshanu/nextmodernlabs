@@ -5,7 +5,6 @@ import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
-import LeadGenPopup from "../components/home/LeadGenPopup";
 import {
     HiOutlineCode,
     HiOutlineDeviceMobile,
@@ -214,7 +213,6 @@ const staggerItem = {
    ──────────────────────────────────────────────── */
 
 export default function ServicesPage() {
-    const [showPopup, setShowPopup] = useState(false);
     const heroRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
     const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
@@ -293,7 +291,6 @@ export default function ServicesPage() {
                             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
                         >
                             <button
-                                onClick={() => setShowPopup(true)}
                                 className="group inline-flex items-center gap-2 px-10 py-5 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-violet-500/40 hover:-translate-y-0.5 transition-all duration-300"
                             >
                                 Get Free Consultation
@@ -301,7 +298,7 @@ export default function ServicesPage() {
                             </button>
                             <Link
                                 href="#services"
-                                className="inline-flex items-center gap-2 px-10 py-5 border border-slate-600 text-slate-300 font-semibold text-lg rounded-full hover:bg-slate-800/50 hover:border-violet-500/50 transition-all duration-300"
+                                className="inline-flex items-center gap-2 px-10 py-5 border border-slate-600 text-slate-300 font-semibold text-lg rounded-full hover:bg-[#111111]/50 hover:border-violet-500/50 transition-all duration-300"
                             >
                                 Explore Services
                             </Link>
@@ -317,7 +314,7 @@ export default function ServicesPage() {
                             {stats.map((stat) => (
                                 <motion.div key={stat.label} variants={staggerItem} className="text-center">
                                     <div className="text-3xl sm:text-4xl font-bold text-white mb-1">{stat.value}</div>
-                                    <div className="text-slate-500 text-xs font-medium uppercase tracking-wider">{stat.label}</div>
+                                    <div className="text-neutral-400 text-xs font-medium uppercase tracking-wider">{stat.label}</div>
                                 </motion.div>
                             ))}
                         </motion.div>
@@ -380,7 +377,7 @@ export default function ServicesPage() {
                                 {/* Gradient border on hover */}
                                 <div className={`absolute -inset-0.5 bg-gradient-to-r ${service.gradient} rounded-3xl opacity-0 group-hover:opacity-30 blur transition-opacity duration-500`} />
 
-                                <div className="relative bg-slate-900/60 backdrop-blur-sm border border-slate-800 rounded-3xl p-8 hover:border-slate-700 transition-all duration-500 h-full flex flex-col">
+                                <div className="relative bg-black/60 backdrop-blur-sm border border-slate-800 rounded-3xl p-8 hover:border-slate-700 transition-all duration-500 h-full flex flex-col">
                                     {/* Tag */}
                                     {service.tag && (
                                         <span className={`absolute top-6 right-6 px-3 py-1 bg-gradient-to-r ${service.gradient} text-white text-xs font-bold rounded-full`}>
@@ -408,7 +405,7 @@ export default function ServicesPage() {
                                             {service.features.map((f) => (
                                                 <span
                                                     key={f}
-                                                    className="flex items-center gap-1.5 px-3 py-1 bg-slate-800/80 border border-slate-700/60 text-slate-300 text-xs font-medium rounded-full"
+                                                    className="flex items-center gap-1.5 px-3 py-1 bg-[#111111]/80 border border-slate-700/60 text-slate-300 text-xs font-medium rounded-full"
                                                 >
                                                     <HiOutlineCheckCircle className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
                                                     {f}
@@ -471,7 +468,7 @@ export default function ServicesPage() {
                     >
                         {whyUs.map((item) => (
                             <motion.div key={item.title} variants={staggerItem} className="group">
-                                <div className="bg-slate-900/50 border border-slate-800 rounded-2xl p-7 hover:border-slate-700 hover:bg-slate-900/70 transition-all duration-300 h-full">
+                                <div className="bg-black/50 border border-slate-800 rounded-2xl p-7 hover:border-slate-700 hover:bg-black/70 transition-all duration-300 h-full">
                                     <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.gradient} flex items-center justify-center mb-5 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
                                         <item.icon className="w-6 h-6 text-white" />
                                     </div>
@@ -680,8 +677,7 @@ export default function ServicesPage() {
                                 className="flex flex-col sm:flex-row items-center justify-center gap-4"
                             >
                                 <button
-                                    onClick={() => setShowPopup(true)}
-                                    className="group inline-flex items-center gap-2 px-10 py-4 bg-white text-violet-700 font-bold rounded-full hover:shadow-2xl hover:shadow-white/20 hover:-translate-y-0.5 transition-all duration-300"
+                                    className="group inline-flex items-center gap-2 px-10 py-4 bg-black text-violet-700 font-bold rounded-full hover:shadow-2xl hover:shadow-white/20 hover:-translate-y-0.5 transition-all duration-300"
                                 >
                                     Get Free Consultation
                                     <HiOutlineArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -700,7 +696,6 @@ export default function ServicesPage() {
             </section>
 
             <Footer />
-            <LeadGenPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />
         </main>
     );
 }
@@ -716,7 +711,7 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
         <motion.div variants={staggerItem} className="group">
             <button
                 onClick={() => setOpen(!open)}
-                className="w-full flex items-center justify-between gap-4 p-6 bg-slate-900/60 border border-slate-800 rounded-2xl hover:border-violet-500/40 transition-all duration-300 text-left"
+                className="w-full flex items-center justify-between gap-4 p-6 bg-black/60 border border-slate-800 rounded-2xl hover:border-violet-500/40 transition-all duration-300 text-left"
                 aria-expanded={open}
             >
                 <span className="text-white font-semibold text-sm sm:text-base leading-snug">{question}</span>
@@ -731,7 +726,7 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
                     initial={{ opacity: 0, y: -8 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.25 }}
-                    className="px-6 py-5 text-slate-400 text-sm leading-relaxed border border-t-0 border-slate-800 rounded-b-2xl bg-slate-900/30 -mt-2"
+                    className="px-6 py-5 text-slate-400 text-sm leading-relaxed border border-t-0 border-slate-800 rounded-b-2xl bg-black/30 -mt-2"
                 >
                     {answer}
                 </motion.div>

@@ -252,7 +252,7 @@ export default function ContactUsPage() {
                         className="flex flex-wrap items-center justify-center gap-3 mt-8"
                     >
                         {["⚡ 24-hr response", "🔒 100% confidential", "🌍 Serving clients worldwide", "✅ Free consultation"].map((chip) => (
-                            <span key={chip} className="px-4 py-2 bg-slate-800/60 border border-slate-700/50 text-slate-300 text-sm rounded-full">
+                            <span key={chip} className="px-4 py-2 bg-[#111111]/60 border border-slate-700/50 text-slate-300 text-sm rounded-full">
                                 {chip}
                             </span>
                         ))}
@@ -287,11 +287,11 @@ export default function ContactUsPage() {
                                     <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${info.gradient} flex items-center justify-center mb-5 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
                                         <info.icon className="w-7 h-7 text-white" />
                                     </div>
-                                    <p className="text-slate-500 text-xs font-semibold uppercase tracking-widest mb-2">{info.label}</p>
+                                    <p className="text-neutral-400 text-xs font-semibold uppercase tracking-widest mb-2">{info.label}</p>
                                     <p className={`text-lg font-bold bg-gradient-to-r ${info.gradient} bg-clip-text text-transparent mb-1`}>
                                         {info.value}
                                     </p>
-                                    <p className="text-slate-500 text-sm">{info.sub}</p>
+                                    <p className="text-neutral-400 text-sm">{info.sub}</p>
                                 </div>
                             </motion.a>
                         ))}
@@ -350,7 +350,7 @@ export default function ContactUsPage() {
                             </div>
 
                             {/* Business Hours */}
-                            <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6">
+                            <div className="bg-black/60 border border-slate-800 rounded-2xl p-6">
                                 <div className="flex items-center gap-3 mb-4">
                                     <div className="w-8 h-8 rounded-lg bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center">
                                         <HiOutlineClock className="w-4 h-4 text-cyan-400" />
@@ -364,7 +364,7 @@ export default function ContactUsPage() {
                                         { day: "Sunday", time: "Closed" },
                                     ].map(({ day, time }) => (
                                         <div key={day} className="flex justify-between">
-                                            <span className="text-slate-500">{day}</span>
+                                            <span className="text-neutral-400">{day}</span>
                                             <span className="text-slate-300 font-medium">{time}</span>
                                         </div>
                                     ))}
@@ -384,7 +384,7 @@ export default function ContactUsPage() {
                                 {/* Glow border */}
                                 <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500/30 via-teal-500/20 to-cyan-500/30 rounded-3xl blur-sm" />
 
-                                <div className="relative bg-slate-900/80 backdrop-blur-sm border border-slate-800 rounded-3xl p-8 md:p-10">
+                                <div className="relative bg-black/80 backdrop-blur-sm border border-slate-800 rounded-3xl p-8 md:p-10">
                                     {showSuccess ? (
                                         /* ── SUCCESS STATE ── */
                                         <motion.div
@@ -430,7 +430,7 @@ export default function ContactUsPage() {
                                                 initial={{ opacity: 0 }}
                                                 animate={{ opacity: 1 }}
                                                 transition={{ delay: 0.5 }}
-                                                className="text-slate-500"
+                                                className="text-neutral-400"
                                             >
                                                 Our team will reach out to you within 24 hours.
                                             </motion.p>
@@ -481,13 +481,13 @@ export default function ContactUsPage() {
                                                             Your Name <span className="text-rose-400">*</span>
                                                         </label>
                                                         <div className="relative">
-                                                            <HiUser className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
+                                                            <HiUser className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-neutral-400" />
                                                             <input
                                                                 type="text"
                                                                 value={formData.name}
                                                                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                                                 placeholder="Bruce Johnson"
-                                                                className={`w-full pl-12 pr-4 py-3.5 bg-slate-800/60 border ${errors.name ? "border-rose-500/60" : "border-slate-700"} rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500/60 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-300`}
+                                                                className={`w-full pl-12 pr-4 py-3.5 bg-[#111111]/60 border ${errors.name ? "border-rose-500/60" : "border-slate-700"} rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500/60 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-300`}
                                                             />
                                                         </div>
                                                         {errors.name && <p className="mt-1 text-xs text-rose-400">{errors.name}</p>}
@@ -498,13 +498,13 @@ export default function ContactUsPage() {
                                                             Email Address <span className="text-rose-400">*</span>
                                                         </label>
                                                         <div className="relative">
-                                                            <HiMail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
+                                                            <HiMail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-neutral-400" />
                                                             <input
                                                                 type="email"
                                                                 value={formData.email}
                                                                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                                                 placeholder="bruce@example.com"
-                                                                className={`w-full pl-12 pr-4 py-3.5 bg-slate-800/60 border ${errors.email ? "border-rose-500/60" : "border-slate-700"} rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500/60 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-300`}
+                                                                className={`w-full pl-12 pr-4 py-3.5 bg-[#111111]/60 border ${errors.email ? "border-rose-500/60" : "border-slate-700"} rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500/60 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-300`}
                                                             />
                                                         </div>
                                                         {errors.email && <p className="mt-1 text-xs text-rose-400">{errors.email}</p>}
@@ -520,20 +520,20 @@ export default function ContactUsPage() {
                                                         <select
                                                             value={formData.countryCode}
                                                             onChange={(e) => setFormData({ ...formData, countryCode: e.target.value })}
-                                                            className="w-28 flex-shrink-0 px-3 py-3.5 bg-slate-800/60 border border-slate-700 rounded-xl text-white focus:outline-none focus:border-cyan-500/60 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-300 appearance-none cursor-pointer text-sm"
+                                                            className="w-28 flex-shrink-0 px-3 py-3.5 bg-[#111111]/60 border border-slate-700 rounded-xl text-white focus:outline-none focus:border-cyan-500/60 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-300 appearance-none cursor-pointer text-sm"
                                                         >
                                                             {countryCodes.map((c) => (
                                                                 <option key={c.code} value={c.code}>{c.flag} {c.code}</option>
                                                             ))}
                                                         </select>
                                                         <div className="relative flex-1">
-                                                            <HiPhone className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
+                                                            <HiPhone className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-neutral-400" />
                                                             <input
                                                                 type="tel"
                                                                 value={formData.phone}
                                                                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                                                                 placeholder="9876543210"
-                                                                className={`w-full pl-12 pr-4 py-3.5 bg-slate-800/60 border ${errors.phone ? "border-rose-500/60" : "border-slate-700"} rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500/60 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-300`}
+                                                                className={`w-full pl-12 pr-4 py-3.5 bg-[#111111]/60 border ${errors.phone ? "border-rose-500/60" : "border-slate-700"} rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500/60 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-300`}
                                                             />
                                                         </div>
                                                     </div>
@@ -548,7 +548,7 @@ export default function ContactUsPage() {
                                                     <select
                                                         value={formData.service}
                                                         onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                                                        className={`w-full px-4 py-3.5 bg-slate-800/60 border ${errors.service ? "border-rose-500/60" : "border-slate-700"} rounded-xl text-white focus:outline-none focus:border-cyan-500/60 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-300 appearance-none cursor-pointer`}
+                                                        className={`w-full px-4 py-3.5 bg-[#111111]/60 border ${errors.service ? "border-rose-500/60" : "border-slate-700"} rounded-xl text-white focus:outline-none focus:border-cyan-500/60 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-300 appearance-none cursor-pointer`}
                                                     >
                                                         <option value="">Select a service…</option>
                                                         {services.map((s) => (
@@ -562,14 +562,14 @@ export default function ContactUsPage() {
                                                 <div>
                                                     <label className="block text-sm font-medium text-slate-300 mb-2">
                                                         Tell Us About Your Project{" "}
-                                                        <span className="text-slate-500 text-xs font-normal">(optional)</span>
+                                                        <span className="text-neutral-400 text-xs font-normal">(optional)</span>
                                                     </label>
                                                     <textarea
                                                         value={formData.message}
                                                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                                                         rows={4}
                                                         placeholder="Describe your project, goals, timeline, and budget (if applicable)…"
-                                                        className="w-full px-4 py-3.5 bg-slate-800/60 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500/60 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-300 resize-none"
+                                                        className="w-full px-4 py-3.5 bg-[#111111]/60 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500/60 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-300 resize-none"
                                                     />
                                                 </div>
 
@@ -595,7 +595,7 @@ export default function ContactUsPage() {
                                                     )}
                                                 </motion.button>
 
-                                                <p className="text-center text-sm text-slate-500">
+                                                <p className="text-center text-sm text-neutral-400">
                                                     🔒 We respect your privacy. No spam, ever.
                                                 </p>
                                             </form>
@@ -651,13 +651,13 @@ export default function ContactUsPage() {
                                 className="group relative block"
                             >
                                 <div className={`absolute -inset-0.5 bg-gradient-to-r ${social.gradient} rounded-2xl opacity-0 group-hover:opacity-30 blur transition-opacity duration-500`} />
-                                <div className="relative flex flex-col items-center gap-3 p-6 bg-slate-900/60 border border-slate-800 rounded-2xl hover:border-slate-700 transition-all duration-300 text-center">
+                                <div className="relative flex flex-col items-center gap-3 p-6 bg-black/60 border border-slate-800 rounded-2xl hover:border-slate-700 transition-all duration-300 text-center">
                                     <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${social.gradient} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
                                         <social.icon className="w-5 h-5 text-white" />
                                     </div>
                                     <div>
                                         <p className="text-white font-semibold text-sm">{social.label}</p>
-                                        <p className="text-slate-500 text-xs mt-0.5">{social.handle}</p>
+                                        <p className="text-neutral-400 text-xs mt-0.5">{social.handle}</p>
                                     </div>
                                 </div>
                             </motion.a>

@@ -5,7 +5,6 @@ import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
-import LeadGenPopup from "../components/home/LeadGenPopup";
 import {
     HiOutlineServer,
     HiOutlineShieldCheck,
@@ -167,7 +166,7 @@ function StatCard({ value, suffix, label }: { value: number; suffix: string; lab
     return (
         <motion.div ref={ref} variants={staggerItem} className="relative group">
             <div className="absolute -inset-0.5 bg-gradient-to-r from-sky-500 to-indigo-600 rounded-2xl opacity-0 group-hover:opacity-30 blur transition-opacity duration-500" />
-            <div className="relative bg-slate-900/70 border border-slate-800 rounded-2xl p-6 text-center hover:border-sky-500/40 transition-all duration-300">
+            <div className="relative bg-black/70 border border-slate-800 rounded-2xl p-6 text-center hover:border-sky-500/40 transition-all duration-300">
                 <div className="text-3xl sm:text-4xl font-bold text-white mb-1">
                     {value === 99.99 ? count.toFixed(2) : Math.floor(count)}
                     <span className="text-sky-400">{suffix}</span>
@@ -183,7 +182,6 @@ function StatCard({ value, suffix, label }: { value: number; suffix: string; lab
    ──────────────────────────────────────────────── */
 
 export default function DomainHostingPage() {
-    const [showPopup, setShowPopup] = useState(false);
     const heroRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
     const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
@@ -260,7 +258,6 @@ export default function DomainHostingPage() {
                                 className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-12"
                             >
                                 <button
-                                    onClick={() => setShowPopup(true)}
                                     className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-sky-600 to-indigo-600 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-sky-500/40 transition-all duration-300"
                                 >
                                     Get Hosting Consultation
@@ -270,7 +267,7 @@ export default function DomainHostingPage() {
                                 </button>
                                 <Link
                                     href="#services"
-                                    className="inline-flex items-center gap-2 px-8 py-4 border border-slate-600 text-slate-300 font-semibold rounded-full hover:bg-slate-800/50 hover:border-sky-500/50 transition-all duration-300"
+                                    className="inline-flex items-center gap-2 px-8 py-4 border border-slate-600 text-slate-300 font-semibold rounded-full hover:bg-[#111111]/50 hover:border-sky-500/50 transition-all duration-300"
                                 >
                                     View Services
                                 </Link>
@@ -283,10 +280,10 @@ export default function DomainHostingPage() {
                                 transition={{ delay: 0.5 }}
                                 className="flex items-center justify-center lg:justify-start gap-3"
                             >
-                                <span className="text-slate-500 text-sm">We support:</span>
+                                <span className="text-neutral-400 text-sm">We support:</span>
                                 <div className="flex gap-2">
                                     {["☁️ AWS", "🔷 Azure", "🌐 GCP"].map((b) => (
-                                        <span key={b} className="px-3 py-1.5 bg-slate-800/60 border border-slate-700/50 rounded-full text-xs text-slate-300 font-medium">
+                                        <span key={b} className="px-3 py-1.5 bg-[#111111]/60 border border-slate-700/50 rounded-full text-xs text-slate-300 font-medium">
                                             {b}
                                         </span>
                                     ))}
@@ -305,13 +302,13 @@ export default function DomainHostingPage() {
 
                             <div className="relative w-full max-w-md">
                                 <div className="absolute -inset-8 bg-gradient-to-r from-sky-500/20 to-indigo-500/20 rounded-3xl blur-3xl" />
-                                <div className="relative bg-slate-900/80 backdrop-blur-sm rounded-2xl border border-slate-700/60 p-6 shadow-2xl">
+                                <div className="relative bg-black/80 backdrop-blur-sm rounded-2xl border border-slate-700/60 p-6 shadow-2xl">
                                     {/* Terminal header */}
                                     <div className="flex items-center gap-2 mb-5">
                                         <div className="w-3 h-3 rounded-full bg-red-500" />
                                         <div className="w-3 h-3 rounded-full bg-yellow-500" />
                                         <div className="w-3 h-3 rounded-full bg-green-500" />
-                                        <span className="ml-3 text-slate-500 text-sm font-mono">server-status</span>
+                                        <span className="ml-3 text-neutral-400 text-sm font-mono">server-status</span>
                                     </div>
 
                                     {/* Server metrics */}
@@ -332,7 +329,7 @@ export default function DomainHostingPage() {
                                                 <span className="text-slate-400">CPU</span>
                                                 <span className="text-sky-400">23%</span>
                                             </div>
-                                            <div className="w-full bg-slate-800 rounded-full h-2">
+                                            <div className="w-full bg-[#111111] rounded-full h-2">
                                                 <div className="bg-gradient-to-r from-sky-500 to-indigo-500 h-2 rounded-full" style={{ width: "23%" }} />
                                             </div>
                                         </div>
@@ -341,7 +338,7 @@ export default function DomainHostingPage() {
                                                 <span className="text-slate-400">Memory</span>
                                                 <span className="text-sky-400">4.2 / 16 GB</span>
                                             </div>
-                                            <div className="w-full bg-slate-800 rounded-full h-2">
+                                            <div className="w-full bg-[#111111] rounded-full h-2">
                                                 <div className="bg-gradient-to-r from-sky-500 to-indigo-500 h-2 rounded-full" style={{ width: "26%" }} />
                                             </div>
                                         </div>
@@ -367,7 +364,7 @@ export default function DomainHostingPage() {
                                 <motion.div
                                     animate={{ y: [0, 8, 0] }}
                                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                                    className="absolute -bottom-4 -left-4 px-4 py-2 bg-slate-800 border border-sky-500/30 rounded-full text-sky-400 text-sm font-semibold shadow-lg"
+                                    className="absolute -bottom-4 -left-4 px-4 py-2 bg-[#111111] border border-sky-500/30 rounded-full text-sky-400 text-sm font-semibold shadow-lg"
                                 >
                                     🔒 SSL Secured
                                 </motion.div>
@@ -604,8 +601,7 @@ export default function DomainHostingPage() {
                                 className="flex flex-col sm:flex-row items-center justify-center gap-4"
                             >
                                 <button
-                                    onClick={() => setShowPopup(true)}
-                                    className="group inline-flex items-center gap-2 px-8 py-4 bg-white text-indigo-700 font-bold rounded-full hover:shadow-2xl hover:shadow-white/20 hover:-translate-y-0.5 transition-all duration-300"
+                                    className="group inline-flex items-center gap-2 px-8 py-4 bg-black text-indigo-700 font-bold rounded-full hover:shadow-2xl hover:shadow-white/20 hover:-translate-y-0.5 transition-all duration-300"
                                 >
                                     Get Free Infrastructure Audit
                                     <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -625,8 +621,6 @@ export default function DomainHostingPage() {
             </section>
 
             <Footer />
-
-            <LeadGenPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />
         </main>
     );
 }

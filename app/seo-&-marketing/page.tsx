@@ -6,7 +6,6 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
-import LeadGenPopup from "../components/home/LeadGenPopup";
 import {
     SiGoogleanalytics,
     SiGoogleads,
@@ -285,7 +284,7 @@ function StatCard({ value, suffix, label }: { value: number; suffix: string; lab
     return (
         <motion.div ref={ref} variants={staggerItem} className="relative group">
             <div className="absolute -inset-0.5 bg-gradient-to-r from-emerald-500 to-green-600 rounded-2xl opacity-0 group-hover:opacity-30 blur transition-opacity duration-500" />
-            <div className="relative bg-slate-900/70 border border-slate-800 rounded-2xl p-6 text-center hover:border-emerald-500/40 transition-all duration-300">
+            <div className="relative bg-black/70 border border-slate-800 rounded-2xl p-6 text-center hover:border-emerald-500/40 transition-all duration-300">
                 <div className="text-3xl sm:text-4xl font-bold text-white mb-1">
                     {count}
                     <span className="text-emerald-400">{suffix}</span>
@@ -302,7 +301,6 @@ function StatCard({ value, suffix, label }: { value: number; suffix: string; lab
 
 export default function SEOMarketingPage() {
     const [activeCase, setActiveCase] = useState(0);
-    const [showPopup, setShowPopup] = useState(false);
     const heroRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
     const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
@@ -387,7 +385,6 @@ export default function SEOMarketingPage() {
                                 className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-12"
                             >
                                 <button
-                                    onClick={() => setShowPopup(true)}
                                     className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-emerald-600 to-green-600 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-emerald-500/40 transition-all duration-300"
                                 >
                                     Get Free SEO Audit
@@ -397,7 +394,7 @@ export default function SEOMarketingPage() {
                                 </button>
                                 <Link
                                     href="#projects"
-                                    className="inline-flex items-center gap-2 px-8 py-4 border border-slate-600 text-slate-300 font-semibold rounded-full hover:bg-slate-800/50 hover:border-emerald-500/50 transition-all duration-300"
+                                    className="inline-flex items-center gap-2 px-8 py-4 border border-slate-600 text-slate-300 font-semibold rounded-full hover:bg-[#111111]/50 hover:border-emerald-500/50 transition-all duration-300"
                                 >
                                     View Case Studies
                                 </Link>
@@ -410,15 +407,15 @@ export default function SEOMarketingPage() {
                                 transition={{ delay: 0.5 }}
                                 className="flex items-center justify-center lg:justify-start gap-3"
                             >
-                                <span className="text-slate-500 text-sm">Channels:</span>
+                                <span className="text-neutral-400 text-sm">Channels:</span>
                                 <div className="flex gap-2">
-                                    <span className="px-3 py-1.5 bg-slate-800/60 border border-slate-700/50 rounded-full text-xs text-slate-300 font-medium flex items-center gap-1.5">
+                                    <span className="px-3 py-1.5 bg-[#111111]/60 border border-slate-700/50 rounded-full text-xs text-slate-300 font-medium flex items-center gap-1.5">
                                         🔍 SEO
                                     </span>
-                                    <span className="px-3 py-1.5 bg-slate-800/60 border border-slate-700/50 rounded-full text-xs text-slate-300 font-medium flex items-center gap-1.5">
+                                    <span className="px-3 py-1.5 bg-[#111111]/60 border border-slate-700/50 rounded-full text-xs text-slate-300 font-medium flex items-center gap-1.5">
                                         📢 PPC
                                     </span>
-                                    <span className="px-3 py-1.5 bg-slate-800/60 border border-slate-700/50 rounded-full text-xs text-slate-300 font-medium flex items-center gap-1.5">
+                                    <span className="px-3 py-1.5 bg-[#111111]/60 border border-slate-700/50 rounded-full text-xs text-slate-300 font-medium flex items-center gap-1.5">
                                         📱 Social
                                     </span>
                                 </div>
@@ -438,13 +435,13 @@ export default function SEOMarketingPage() {
                             {/* Dashboard mockup */}
                             <div className="relative w-full max-w-md">
                                 <div className="absolute -inset-8 bg-gradient-to-r from-emerald-500/20 to-green-500/20 rounded-3xl blur-3xl" />
-                                <div className="relative bg-slate-900/80 backdrop-blur-sm rounded-2xl border border-slate-700/60 p-6 shadow-2xl">
+                                <div className="relative bg-black/80 backdrop-blur-sm rounded-2xl border border-slate-700/60 p-6 shadow-2xl">
                                     {/* Window header */}
                                     <div className="flex items-center gap-2 mb-5">
                                         <div className="w-3 h-3 rounded-full bg-red-500" />
                                         <div className="w-3 h-3 rounded-full bg-yellow-500" />
                                         <div className="w-3 h-3 rounded-full bg-green-500" />
-                                        <span className="ml-3 text-slate-500 text-sm font-mono">analytics-dashboard</span>
+                                        <span className="ml-3 text-neutral-400 text-sm font-mono">analytics-dashboard</span>
                                     </div>
 
                                     {/* Dashboard content */}
@@ -452,7 +449,7 @@ export default function SEOMarketingPage() {
                                         {/* Traffic chart */}
                                         <div>
                                             <div className="flex items-center justify-between mb-2">
-                                                <p className="text-slate-500 text-xs font-semibold uppercase tracking-wider">Organic Traffic</p>
+                                                <p className="text-neutral-400 text-xs font-semibold uppercase tracking-wider">Organic Traffic</p>
                                                 <span className="text-emerald-400 text-xs font-bold">↑ 340%</span>
                                             </div>
                                             <div className="flex items-end gap-1 h-16">
@@ -465,8 +462,8 @@ export default function SEOMarketingPage() {
                                                 ))}
                                             </div>
                                             <div className="flex justify-between mt-1">
-                                                <span className="text-slate-600 text-[10px]">Jan</span>
-                                                <span className="text-slate-600 text-[10px]">Dec</span>
+                                                <span className="text-neutral-300 text-[10px]">Jan</span>
+                                                <span className="text-neutral-300 text-[10px]">Dec</span>
                                             </div>
                                         </div>
 
@@ -477,9 +474,9 @@ export default function SEOMarketingPage() {
                                                 { label: "CTR", value: "4.8%", change: "+1.2%" },
                                                 { label: "Conv Rate", value: "3.2%", change: "+0.8%" },
                                             ].map((m) => (
-                                                <div key={m.label} className="bg-slate-800/50 rounded-xl p-3 text-center">
+                                                <div key={m.label} className="bg-[#111111]/50 rounded-xl p-3 text-center">
                                                     <p className="text-white text-sm font-bold">{m.value}</p>
-                                                    <p className="text-slate-500 text-[10px]">{m.label}</p>
+                                                    <p className="text-neutral-400 text-[10px]">{m.label}</p>
                                                     <p className="text-emerald-400 text-[10px] font-semibold">{m.change}</p>
                                                 </div>
                                             ))}
@@ -487,14 +484,14 @@ export default function SEOMarketingPage() {
 
                                         {/* Top ranking keywords */}
                                         <div>
-                                            <p className="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">Top Rankings</p>
+                                            <p className="text-neutral-400 text-xs font-semibold uppercase tracking-wider mb-2">Top Rankings</p>
                                             <div className="space-y-1.5">
                                                 {[
                                                     { kw: "best saas platform", pos: "#1" },
                                                     { kw: "enterprise software", pos: "#2" },
                                                     { kw: "cloud solutions", pos: "#3" },
                                                 ].map((r) => (
-                                                    <div key={r.kw} className="flex items-center justify-between bg-slate-800/30 rounded-lg px-3 py-1.5">
+                                                    <div key={r.kw} className="flex items-center justify-between bg-[#111111]/30 rounded-lg px-3 py-1.5">
                                                         <span className="text-slate-300 text-xs">{r.kw}</span>
                                                         <span className="text-emerald-400 text-xs font-bold">{r.pos}</span>
                                                     </div>
@@ -515,7 +512,7 @@ export default function SEOMarketingPage() {
                                 <motion.div
                                     animate={{ y: [0, 8, 0] }}
                                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                                    className="absolute -bottom-4 -left-4 px-4 py-2 bg-slate-800 border border-emerald-500/30 rounded-full text-emerald-400 text-sm font-semibold shadow-lg"
+                                    className="absolute -bottom-4 -left-4 px-4 py-2 bg-[#111111] border border-emerald-500/30 rounded-full text-emerald-400 text-sm font-semibold shadow-lg"
                                 >
                                     🚀 10x ROI
                                 </motion.div>
@@ -551,7 +548,7 @@ export default function SEOMarketingPage() {
                     viewport={{ once: true }}
                     className="section-container mb-8"
                 >
-                    <p className="text-center text-slate-500 text-sm font-semibold uppercase tracking-widest">
+                    <p className="text-center text-neutral-400 text-sm font-semibold uppercase tracking-widest">
                         Marketing Platforms We Master
                     </p>
                 </motion.div>
@@ -563,10 +560,10 @@ export default function SEOMarketingPage() {
                     <div className="flex animate-marquee" style={{ width: "max-content" }}>
                         {[...technologies, ...technologies].map((tech, i) => (
                             <div key={`${tech.name}-${i}`} className="flex flex-col items-center justify-center mx-8 group cursor-pointer">
-                                <div className="w-16 h-16 flex items-center justify-center rounded-2xl bg-slate-800/50 border border-slate-700/50 group-hover:border-emerald-500/50 group-hover:bg-slate-800 transition-all duration-300 mb-2">
+                                <div className="w-16 h-16 flex items-center justify-center rounded-2xl bg-[#111111]/50 border border-slate-700/50 group-hover:border-emerald-500/50 group-hover:bg-[#111111] transition-all duration-300 mb-2">
                                     <tech.icon className="w-8 h-8 transition-all duration-300 group-hover:scale-110" style={{ color: tech.color }} />
                                 </div>
-                                <span className="text-xs text-slate-500 group-hover:text-slate-300 transition-colors font-medium">{tech.name}</span>
+                                <span className="text-xs text-neutral-400 group-hover:text-slate-300 transition-colors font-medium">{tech.name}</span>
                             </div>
                         ))}
                     </div>
@@ -665,7 +662,7 @@ export default function SEOMarketingPage() {
                                     transition={{ delay: i * 0.1, duration: 0.5 }}
                                     className="flex-shrink-0 w-[360px] snap-center group"
                                 >
-                                    <div className="relative bg-slate-900/60 border border-slate-800 rounded-3xl overflow-hidden hover:border-emerald-500/30 transition-all duration-500">
+                                    <div className="relative bg-black/60 border border-slate-800 rounded-3xl overflow-hidden hover:border-emerald-500/30 transition-all duration-500">
                                         {/* Image */}
                                         <div className="relative h-56 overflow-hidden">
                                             <Image
@@ -674,7 +671,7 @@ export default function SEOMarketingPage() {
                                                 fill
                                                 className="object-cover group-hover:scale-105 transition-transform duration-700"
                                             />
-                                            <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60" />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60" />
                                             <div className="absolute top-3 left-3 flex gap-2">
                                                 <span className="px-2.5 py-1 bg-emerald-500/80 backdrop-blur-sm text-white text-xs font-semibold rounded-full">
                                                     {project.category}
@@ -692,7 +689,7 @@ export default function SEOMarketingPage() {
                                             <p className="text-slate-400 text-sm leading-relaxed mb-4">{project.description}</p>
                                             <div className="flex flex-wrap gap-2">
                                                 {project.tech.map((t) => (
-                                                    <span key={t} className="px-2.5 py-1 bg-slate-800 border border-slate-700 text-slate-300 text-xs font-medium rounded-full">
+                                                    <span key={t} className="px-2.5 py-1 bg-[#111111] border border-slate-700 text-slate-300 text-xs font-medium rounded-full">
                                                         {t}
                                                     </span>
                                                 ))}
@@ -703,7 +700,7 @@ export default function SEOMarketingPage() {
                             ))}
                         </div>
                         {/* Scroll hint */}
-                        <div className="flex items-center justify-center gap-2 mt-4 text-slate-500 text-sm">
+                        <div className="flex items-center justify-center gap-2 mt-4 text-neutral-400 text-sm">
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
                             </svg>
@@ -769,7 +766,7 @@ export default function SEOMarketingPage() {
 
                                         {/* Card */}
                                         <div className={`w-full md:w-[calc(50%-3rem)] group`}>
-                                            <div className={`bg-slate-900/50 border border-slate-800 rounded-2xl p-6 hover:border-emerald-500/40 transition-all duration-500`}>
+                                            <div className={`bg-black/50 border border-slate-800 rounded-2xl p-6 hover:border-emerald-500/40 transition-all duration-500`}>
                                                 <div className="flex items-center gap-3 mb-3">
                                                     <span className={`text-sm font-bold px-3 py-1 rounded-full bg-gradient-to-r ${step.color} text-white`}>
                                                         Phase {step.phase}
@@ -916,8 +913,7 @@ export default function SEOMarketingPage() {
                                 className="flex flex-col sm:flex-row items-center justify-center gap-4"
                             >
                                 <button
-                                    onClick={() => setShowPopup(true)}
-                                    className="group inline-flex items-center gap-2 px-8 py-4 bg-white text-emerald-700 font-bold rounded-full hover:shadow-2xl hover:shadow-white/20 hover:-translate-y-0.5 transition-all duration-300"
+                                    className="group inline-flex items-center gap-2 px-8 py-4 bg-black text-emerald-700 font-bold rounded-full hover:shadow-2xl hover:shadow-white/20 hover:-translate-y-0.5 transition-all duration-300"
                                 >
                                     Get Free SEO Audit
                                     <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -937,8 +933,6 @@ export default function SEOMarketingPage() {
             </section>
 
             <Footer />
-
-            <LeadGenPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />
         </main>
     );
 }

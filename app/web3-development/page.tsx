@@ -5,7 +5,6 @@ import { motion, useInView, useScroll, useTransform, AnimatePresence } from "fra
 import Link from "next/link";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
-import LeadGenPopup from "../components/home/LeadGenPopup";
 import {
     SiEthereum,
     SiSolidity,
@@ -214,7 +213,7 @@ function StatCard({ value, suffix, label }: { value: number; suffix: string; lab
     return (
         <motion.div ref={ref} variants={staggerItem} className="relative group">
             <div className="absolute -inset-0.5 bg-gradient-to-r from-violet-500 to-cyan-500 rounded-2xl opacity-0 group-hover:opacity-30 blur transition-opacity duration-500" />
-            <div className="relative bg-slate-900/70 border border-slate-800 rounded-2xl p-6 text-center hover:border-violet-500/40 transition-all duration-300">
+            <div className="relative bg-black/70 border border-slate-800 rounded-2xl p-6 text-center hover:border-violet-500/40 transition-all duration-300">
                 <div className="text-3xl sm:text-4xl font-bold text-white mb-1">
                     {Math.floor(count)}
                     <span className="text-violet-400">{suffix}</span>
@@ -270,7 +269,7 @@ function CryptoPriceTicker() {
     if (loading) {
         return (
             <div className="py-4 bg-[#080e1c] border-y border-violet-500/10">
-                <div className="flex items-center justify-center gap-2 text-slate-500 text-sm">
+                <div className="flex items-center justify-center gap-2 text-neutral-400 text-sm">
                     <div className="w-4 h-4 border-2 border-violet-500 border-t-transparent rounded-full animate-spin" />
                     Loading live prices...
                 </div>
@@ -305,7 +304,7 @@ function CryptoPriceTicker() {
                             {coin.price_change_percentage_24h >= 0 ? "▲" : "▼"}{" "}
                             {Math.abs(coin.price_change_percentage_24h).toFixed(2)}%
                         </span>
-                        <div className="w-px h-4 bg-slate-800 ml-2" />
+                        <div className="w-px h-4 bg-[#111111] ml-2" />
                     </div>
                 ))}
             </div>
@@ -331,7 +330,6 @@ function CryptoPriceTicker() {
    ──────────────────────────────────────────────── */
 
 export default function Web3DevelopmentPage() {
-    const [showPopup, setShowPopup] = useState(false);
     const heroRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
     const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
@@ -409,7 +407,6 @@ export default function Web3DevelopmentPage() {
                                 className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-12"
                             >
                                 <button
-                                    onClick={() => setShowPopup(true)}
                                     className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-violet-600 to-cyan-600 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-violet-500/40 transition-all duration-300"
                                 >
                                     Start Your Web3 Project
@@ -419,7 +416,7 @@ export default function Web3DevelopmentPage() {
                                 </button>
                                 <Link
                                     href="#services"
-                                    className="inline-flex items-center gap-2 px-8 py-4 border border-slate-600 text-slate-300 font-semibold rounded-full hover:bg-slate-800/50 hover:border-violet-500/50 transition-all duration-300"
+                                    className="inline-flex items-center gap-2 px-8 py-4 border border-slate-600 text-slate-300 font-semibold rounded-full hover:bg-[#111111]/50 hover:border-violet-500/50 transition-all duration-300"
                                 >
                                     Explore Services
                                 </Link>
@@ -435,7 +432,7 @@ export default function Web3DevelopmentPage() {
                                 {blockchainNetworks.map((n) => (
                                     <span
                                         key={n.name}
-                                        className="px-3 py-1.5 bg-slate-800/60 border border-slate-700/50 rounded-full text-xs text-slate-300 font-medium"
+                                        className="px-3 py-1.5 bg-[#111111]/60 border border-slate-700/50 rounded-full text-xs text-slate-300 font-medium"
                                     >
                                         {n.name} <span className="text-violet-400">{n.type}</span>
                                     </span>
@@ -454,13 +451,13 @@ export default function Web3DevelopmentPage() {
 
                             <div className="relative w-full max-w-md">
                                 <div className="absolute -inset-8 bg-gradient-to-r from-violet-500/20 to-cyan-500/20 rounded-3xl blur-3xl" />
-                                <div className="relative bg-slate-900/80 backdrop-blur-sm rounded-2xl border border-violet-700/40 p-6 shadow-2xl">
+                                <div className="relative bg-black/80 backdrop-blur-sm rounded-2xl border border-violet-700/40 p-6 shadow-2xl">
                                     {/* Terminal header */}
                                     <div className="flex items-center gap-2 mb-5">
                                         <div className="w-3 h-3 rounded-full bg-red-500" />
                                         <div className="w-3 h-3 rounded-full bg-yellow-500" />
                                         <div className="w-3 h-3 rounded-full bg-green-500" />
-                                        <span className="ml-3 text-slate-500 text-sm font-mono">smart-contract.sol</span>
+                                        <span className="ml-3 text-neutral-400 text-sm font-mono">smart-contract.sol</span>
                                     </div>
 
                                     {/* Code block */}
@@ -512,7 +509,7 @@ export default function Web3DevelopmentPage() {
                                     </div>
 
                                     {/* Status bar */}
-                                    <div className="mt-5 pt-4 border-t border-slate-800 flex items-center justify-between text-xs text-slate-500">
+                                    <div className="mt-5 pt-4 border-t border-slate-800 flex items-center justify-between text-xs text-neutral-400">
                                         <span className="flex items-center gap-1.5">
                                             <span className="w-2 h-2 bg-emerald-400 rounded-full" /> Compiled
                                         </span>
@@ -532,7 +529,7 @@ export default function Web3DevelopmentPage() {
                                 <motion.div
                                     animate={{ y: [0, 8, 0] }}
                                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                                    className="absolute -bottom-4 -left-4 px-4 py-2 bg-slate-800 border border-violet-500/30 rounded-full text-violet-400 text-sm font-semibold shadow-lg"
+                                    className="absolute -bottom-4 -left-4 px-4 py-2 bg-[#111111] border border-violet-500/30 rounded-full text-violet-400 text-sm font-semibold shadow-lg"
                                 >
                                     🔐 Audited & Verified
                                 </motion.div>
@@ -570,7 +567,7 @@ export default function Web3DevelopmentPage() {
                 <div className="absolute inset-0 bg-gradient-to-b from-violet-500/5 via-transparent to-transparent" />
 
                 <div className="section-container mb-8">
-                    <p className="text-center text-slate-500 text-sm font-semibold uppercase tracking-widest">
+                    <p className="text-center text-neutral-400 text-sm font-semibold uppercase tracking-widest">
                         Our Blockchain Technology Stack
                     </p>
                 </div>
@@ -583,7 +580,7 @@ export default function Web3DevelopmentPage() {
                         {[...techStack, ...techStack, ...techStack].map((tech, i) => (
                             <div
                                 key={`${tech.name}-${i}`}
-                                className="flex items-center gap-3 px-8 py-4 mx-2 bg-slate-900/50 border border-slate-800/50 rounded-xl hover:border-violet-500/30 transition-colors flex-shrink-0"
+                                className="flex items-center gap-3 px-8 py-4 mx-2 bg-black/50 border border-slate-800/50 rounded-xl hover:border-violet-500/30 transition-colors flex-shrink-0"
                             >
                                 <tech.icon className="w-7 h-7" style={{ color: tech.color }} />
                                 <span className="text-slate-300 font-medium text-sm whitespace-nowrap">{tech.name}</span>
@@ -646,7 +643,7 @@ export default function Web3DevelopmentPage() {
                         {web3Services.map((service) => (
                             <motion.div key={service.title} variants={staggerItem} className="group relative">
                                 <div className={`absolute -inset-0.5 bg-gradient-to-r ${service.gradient} rounded-2xl opacity-0 group-hover:opacity-20 blur transition-opacity duration-500`} />
-                                <div className="relative bg-slate-900/60 border border-slate-800 rounded-2xl p-7 hover:border-slate-700 transition-all duration-500 h-full">
+                                <div className="relative bg-black/60 border border-slate-800 rounded-2xl p-7 hover:border-slate-700 transition-all duration-500 h-full">
                                     <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-5 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
                                         <service.icon className="w-6 h-6 text-white" />
                                     </div>
@@ -738,8 +735,7 @@ export default function Web3DevelopmentPage() {
                                 className="flex flex-col sm:flex-row items-center justify-center gap-4"
                             >
                                 <button
-                                    onClick={() => setShowPopup(true)}
-                                    className="group inline-flex items-center gap-2 px-8 py-4 bg-white text-purple-700 font-bold rounded-full hover:shadow-2xl hover:shadow-white/20 hover:-translate-y-0.5 transition-all duration-300"
+                                    className="group inline-flex items-center gap-2 px-8 py-4 bg-black text-purple-700 font-bold rounded-full hover:shadow-2xl hover:shadow-white/20 hover:-translate-y-0.5 transition-all duration-300"
                                 >
                                     Get Free Consultation
                                     <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -759,8 +755,6 @@ export default function Web3DevelopmentPage() {
             </section>
 
             <Footer />
-
-            <LeadGenPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />
         </main>
     );
 }

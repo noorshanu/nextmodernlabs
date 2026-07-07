@@ -6,7 +6,6 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
-import LeadGenPopup from "../components/home/LeadGenPopup";
 import {
   SiReact,
   SiNextdotjs,
@@ -299,7 +298,6 @@ function StatCard({ value, suffix, label }: { value: number; suffix: string; lab
 
 export default function WebDevelopmentPage() {
   const [sliderIndex, setSliderIndex] = useState(0);
-  const [showPopup, setShowPopup] = useState(false);
   const maxSlide = projects.length - 1;
 
   // Auto-play slider
@@ -381,7 +379,6 @@ export default function WebDevelopmentPage() {
                 className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4"
               >
                 <button
-                  onClick={() => setShowPopup(true)}
                   className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-cyan-500/40 transition-all duration-300"
                 >
                   Start Your Project
@@ -396,7 +393,7 @@ export default function WebDevelopmentPage() {
                 </button>
                 <Link
                   href="#projects"
-                  className="inline-flex items-center gap-2 px-8 py-4 border border-slate-600 text-slate-300 font-semibold rounded-full hover:bg-slate-800/50 hover:border-cyan-500/50 transition-all duration-300"
+                  className="inline-flex items-center gap-2 px-8 py-4 border border-slate-600 text-slate-300 font-semibold rounded-full hover:bg-[#111111]/50 hover:border-cyan-500/50 transition-all duration-300"
                 >
                   View Our Work
                 </Link>
@@ -411,13 +408,13 @@ export default function WebDevelopmentPage() {
               className="relative hidden lg:block"
             >
               <div className="absolute -inset-8 bg-gradient-to-r from-cyan-500/20 to-teal-500/20 rounded-3xl blur-3xl" />
-              <div className="relative bg-slate-900/80 backdrop-blur-sm rounded-2xl border border-slate-700/60 p-6 shadow-2xl">
+              <div className="relative bg-black/80 backdrop-blur-sm rounded-2xl border border-slate-700/60 p-6 shadow-2xl">
                 {/* Terminal header */}
                 <div className="flex items-center gap-2 mb-4">
                   <div className="w-3 h-3 rounded-full bg-red-500" />
                   <div className="w-3 h-3 rounded-full bg-yellow-500" />
                   <div className="w-3 h-3 rounded-full bg-green-500" />
-                  <span className="ml-3 text-slate-500 text-sm font-mono">web-app.tsx</span>
+                  <span className="ml-3 text-neutral-400 text-sm font-mono">web-app.tsx</span>
                 </div>
                 <pre className="text-sm font-mono leading-relaxed overflow-hidden">
                   <code>
@@ -427,15 +424,15 @@ export default function WebDevelopmentPage() {
                     <span className="text-slate-300">{" } "}</span>
                     <span className="text-purple-400">from</span>
                     <span className="text-emerald-400">{" 'next'"}</span>
-                    <span className="text-slate-500">;</span>
+                    <span className="text-neutral-400">;</span>
                     {"\n\n"}
                     <span className="text-purple-400">{"export default"}</span>
                     <span className="text-blue-400">{" function "}</span>
                     <span className="text-yellow-400">App</span>
                     <span className="text-slate-300">{"() {"}</span>
                     {"\n"}
-                    <span className="text-slate-500">{"  // "}</span>
-                    <span className="text-slate-600">Build something amazing</span>
+                    <span className="text-neutral-400">{"  // "}</span>
+                    <span className="text-neutral-300">Build something amazing</span>
                     {"\n"}
                     <span className="text-purple-400">{"  return"}</span>
                     <span className="text-slate-300">{" ("}</span>
@@ -477,7 +474,7 @@ export default function WebDevelopmentPage() {
               <motion.div
                 animate={{ y: [0, 8, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute -bottom-4 -left-4 px-4 py-2 bg-slate-800 border border-cyan-500/30 rounded-full text-cyan-400 text-sm font-semibold shadow-lg"
+                className="absolute -bottom-4 -left-4 px-4 py-2 bg-[#111111] border border-cyan-500/30 rounded-full text-cyan-400 text-sm font-semibold shadow-lg"
               >
                 🔒 Secure & Scalable
               </motion.div>
@@ -505,7 +502,7 @@ export default function WebDevelopmentPage() {
       {/* ═══════════════════════════════════════════
                 SECTION 2 — TECHNOLOGY MARQUEE
                 ═══════════════════════════════════════════ */}
-      <section className="py-16 bg-slate-900/50 border-y border-slate-800 overflow-hidden">
+      <section className="py-16 bg-black/50 border-y border-slate-800 overflow-hidden">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -513,7 +510,7 @@ export default function WebDevelopmentPage() {
           transition={{ duration: 0.6 }}
           className="section-container mb-8"
         >
-          <p className="text-center text-slate-500 text-sm font-semibold uppercase tracking-widest">
+          <p className="text-center text-neutral-400 text-sm font-semibold uppercase tracking-widest">
             Technologies We Master
           </p>
         </motion.div>
@@ -529,13 +526,13 @@ export default function WebDevelopmentPage() {
                 key={`${tech.name}-${i}`}
                 className="flex flex-col items-center justify-center mx-8 group cursor-pointer"
               >
-                <div className="w-16 h-16 flex items-center justify-center rounded-2xl bg-slate-800/50 border border-slate-700/50 group-hover:border-cyan-500/50 group-hover:bg-slate-800 transition-all duration-300 mb-2">
+                <div className="w-16 h-16 flex items-center justify-center rounded-2xl bg-[#111111]/50 border border-slate-700/50 group-hover:border-cyan-500/50 group-hover:bg-[#111111] transition-all duration-300 mb-2">
                   <tech.icon
                     className="w-8 h-8 transition-all duration-300 group-hover:scale-110"
                     style={{ color: tech.color }}
                   />
                 </div>
-                <span className="text-xs text-slate-500 group-hover:text-slate-300 transition-colors duration-300 font-medium">
+                <span className="text-xs text-neutral-400 group-hover:text-slate-300 transition-colors duration-300 font-medium">
                   {tech.name}
                 </span>
               </div>
@@ -580,7 +577,7 @@ export default function WebDevelopmentPage() {
               >
                 {projects.map((project, i) => (
                   <div key={project.title} className="w-full flex-shrink-0 px-2">
-                    <div className="grid md:grid-cols-2 gap-8 bg-slate-900/60 backdrop-blur-sm border border-slate-800 rounded-3xl overflow-hidden">
+                    <div className="grid md:grid-cols-2 gap-8 bg-black/60 backdrop-blur-sm border border-slate-800 rounded-3xl overflow-hidden">
                       {/* Image */}
                       <div className="relative h-64 md:h-96 overflow-hidden">
                         <Image
@@ -607,7 +604,7 @@ export default function WebDevelopmentPage() {
                           {project.tech.map((t) => (
                             <span
                               key={t}
-                              className="px-3 py-1 bg-slate-800 border border-slate-700 text-slate-300 text-xs font-medium rounded-full"
+                              className="px-3 py-1 bg-[#111111] border border-slate-700 text-slate-300 text-xs font-medium rounded-full"
                             >
                               {t}
                             </span>
@@ -663,7 +660,7 @@ export default function WebDevelopmentPage() {
       {/* ═══════════════════════════════════════════
                 SECTION 4 — WEB DEV LIFECYCLE
                 ═══════════════════════════════════════════ */}
-      <section className="section-padding bg-slate-900 relative overflow-hidden">
+      <section className="section-padding bg-black relative overflow-hidden">
         {/* Background pattern */}
         <div
           className="absolute inset-0 opacity-[0.02]"
@@ -708,14 +705,14 @@ export default function WebDevelopmentPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {lifecycleSteps.map((step) => (
                 <motion.div key={step.number} variants={staggerItem} className="group">
-                  <div className="bg-slate-800/40 backdrop-blur-sm border border-slate-700/60 rounded-2xl p-7 hover:border-cyan-500/40 hover:bg-slate-800/60 transition-all duration-500 h-full">
+                  <div className="bg-[#111111]/40 backdrop-blur-sm border border-slate-700/60 rounded-2xl p-7 hover:border-cyan-500/40 hover:bg-[#111111]/60 transition-all duration-500 h-full">
                     <div className="flex items-center gap-4 mb-4">
                       <div
                         className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${step.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}
                       >
                         <step.icon className="w-7 h-7 text-white" />
                       </div>
-                      <span className="text-3xl font-bold text-slate-700 group-hover:text-slate-600 transition-colors">
+                      <span className="text-3xl font-bold text-neutral-200 group-hover:text-neutral-300 transition-colors">
                         {step.number}
                       </span>
                     </div>
@@ -767,7 +764,7 @@ export default function WebDevelopmentPage() {
                 {/* Gradient border glow */}
                 <div className={`absolute -inset-0.5 bg-gradient-to-r ${app.gradient} rounded-2xl opacity-0 group-hover:opacity-20 blur transition-opacity duration-500`} />
 
-                <div className="relative bg-slate-900/70 border border-slate-800 rounded-2xl p-8 hover:border-slate-700 transition-all duration-500 h-full">
+                <div className="relative bg-black/70 border border-slate-800 rounded-2xl p-8 hover:border-slate-700 transition-all duration-500 h-full">
                   <div
                     className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${app.gradient} flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}
                   >
@@ -785,7 +782,7 @@ export default function WebDevelopmentPage() {
       {/* ═══════════════════════════════════════════
                 SECTION 6 — STATS / TRUST
                 ═══════════════════════════════════════════ */}
-      <section className="py-20 bg-slate-900 border-y border-slate-800 relative overflow-hidden">
+      <section className="py-20 bg-black border-y border-slate-800 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/5 via-transparent to-teal-500/5" />
         <div className="section-container relative z-10">
           <motion.div
@@ -848,8 +845,7 @@ export default function WebDevelopmentPage() {
                 className="flex flex-col sm:flex-row items-center justify-center gap-4"
               >
                 <button
-                  onClick={() => setShowPopup(true)}
-                  className="group inline-flex items-center gap-2 px-8 py-4 bg-white text-teal-700 font-bold rounded-full hover:shadow-2xl hover:shadow-white/20 hover:-translate-y-0.5 transition-all duration-300"
+                  className="group inline-flex items-center gap-2 px-8 py-4 bg-black text-teal-700 font-bold rounded-full hover:shadow-2xl hover:shadow-white/20 hover:-translate-y-0.5 transition-all duration-300"
                 >
                   Get Free Consultation
                   <svg
@@ -874,8 +870,6 @@ export default function WebDevelopmentPage() {
       </section>
 
       <Footer />
-
-      <LeadGenPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />
     </main>
   );
 }
